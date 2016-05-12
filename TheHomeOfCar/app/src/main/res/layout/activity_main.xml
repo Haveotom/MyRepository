@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.MainActivity">
+
+    <FrameLayout
+        android:id="@+id/replace_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <TextView style="@style/Line" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/main_recommend_btn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/activity_title_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_title_horizontal_margin"
+            android:layout_weight="1"
+            android:background="@drawable/recommend_selection"
+            android:button="@null" />
+
+        <RadioButton
+            android:id="@+id/main_forum_btn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/activity_title_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_title_horizontal_margin"
+            android:layout_weight="1"
+            android:background="@drawable/forum_selection"
+            android:button="@null" />
+
+        <RadioButton
+            android:id="@+id/main_findcar_btn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/activity_title_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_title_horizontal_margin"
+            android:layout_weight="1"
+            android:background="@drawable/findcar_selection"
+            android:button="@null" />
+
+        <RadioButton
+            android:id="@+id/main_discover_btn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/activity_title_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_title_horizontal_margin"
+            android:layout_weight="1"
+            android:background="@drawable/discover_selection"
+            android:button="@null" />
+
+        <RadioButton
+            android:id="@+id/main_individul_btn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/activity_title_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_title_horizontal_margin"
+            android:layout_weight="1"
+            android:background="@drawable/individual_selection"
+            android:button="@null" />
+
+
+    </RadioGroup>
+
+</LinearLayout>

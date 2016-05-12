@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView style="@style/Line" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:padding="@dimen/item_margin_small">
+
+        <TextView
+            android:id="@+id/item_hotpost_title_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/padding_horizontal"
+            android:text="标题"
+            android:textColor="@color/grayWord_much" />
+
+        <TextView
+            android:id="@+id/item_hotpost_forum__tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/item_hotpost_title_tv"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/item_margin_small"
+
+            android:text="luntan"
+            android:textColor="@color/grayword_less"
+            android:textSize="@dimen/textsize_smallest" />
+
+        <TextView
+            android:id="@+id/item_hotpost_time_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/item_hotpost_forum__tv"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/item_hotpost_forum__tv"
+
+            android:text="time"
+            android:textColor="@color/grayword_less"
+            android:textSize="@dimen/textsize_smallest" />
+
+        <ImageView
+            android:id="@+id/item_hotpost_picture_Iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/item_margin_small"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/item_hotpost_time_tv"
+            android:src="@mipmap/tupian1" />
+
+        <TextView
+            android:id="@+id/item_hotpost_number_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/item_hotpost_time_tv"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/item_margin_small"
+            android:text="回帖数"
+            android:textColor="@color/grayword_less"
+            android:textSize="@dimen/textsize_smallest" />
+
+    </RelativeLayout>
+
+
+</LinearLayout>
