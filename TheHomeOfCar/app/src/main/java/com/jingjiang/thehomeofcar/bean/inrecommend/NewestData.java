@@ -406,6 +406,7 @@ public class NewestData {
         }
 
         public static class FocusimgBean {
+
             private int id;
             private String imgurl;
             private String title;

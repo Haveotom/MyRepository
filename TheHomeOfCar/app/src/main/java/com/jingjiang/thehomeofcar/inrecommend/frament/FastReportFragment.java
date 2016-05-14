@@ -16,6 +16,7 @@ import com.jingjiang.thehomeofcar.base.BaseFragment;
 import com.jingjiang.thehomeofcar.bean.inrecommend.FastReportData;
 import com.jingjiang.thehomeofcar.inrecommend.adapter.FastReportAdapter;
 import com.jingjiang.thehomeofcar.widget.GsonRequest;
+import com.jingjiang.thehomeofcar.widget.MyRequestQueue;
 
 import java.util.List;
 
@@ -43,7 +44,6 @@ public class FastReportFragment extends BaseFragment {
     @Override
     public void initData() {
 
-        final RequestQueue requestQueue = Volley.newRequestQueue(getContext());
         GsonRequest<FastReportData> gsonRequest = new GsonRequest<>(Request.Method.GET,
                 "http://app.api.autohome.com.cn/autov5.0.0/news/fastnewslist-pm2-b0-l0-s20-lastid0.json",
                 new Response.ErrorListener() {
@@ -60,8 +60,7 @@ public class FastReportFragment extends BaseFragment {
 
             }
         }, FastReportData.class);
-
-        requestQueue.add(gsonRequest);
+        MyRequestQueue.getRequestQueue().add(gsonRequest);
 
         recyclerView.setAdapter(fastReportAdapter);
     }

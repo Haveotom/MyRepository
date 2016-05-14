@@ -9,7 +9,7 @@ import android.content.Context;
  * 在使用的时候,还需要在清单文件中注册
  */
 public class MyApplication extends Application {
-    private Context context;
+    public static Context context;
 
     @Override
     public void onCreate() {

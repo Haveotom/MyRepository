@@ -14,6 +14,7 @@ import com.jingjiang.thehomeofcar.base.BaseFragment;
 import com.jingjiang.thehomeofcar.bean.inrecommend.VideoData;
 import com.jingjiang.thehomeofcar.inrecommend.adapter.VideoAdapter;
 import com.jingjiang.thehomeofcar.widget.GsonRequest;
+import com.jingjiang.thehomeofcar.widget.MyRequestQueue;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,7 +43,7 @@ public class VideoFragment extends BaseFragment {
 
     @Override
     public void initData() {
-        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+//        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
         GsonRequest<VideoData> gsonRequest = new GsonRequest<>(Request.Method.GET,
                 "http://app.api.autohome.com.cn/autov5.0.0/news/videolist-pm2-vt0-s20-lastid0.json",
                 new Response.ErrorListener() {
@@ -57,8 +58,7 @@ public class VideoFragment extends BaseFragment {
 
             }
         }, VideoData.class);
-        requestQueue.add(gsonRequest);
-
+        MyRequestQueue.getRequestQueue().add(gsonRequest);
 
         recyclerView.setAdapter(videoAdapter);
     }

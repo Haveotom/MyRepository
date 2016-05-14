@@ -1,4 +1,4 @@
-package com.jingjiang.thehomeofcar.infindcar;
+package com.jingjiang.thehomeofcar.infindcar.fragment;
 
 import com.jingjiang.thehomeofcar.R;
 import com.jingjiang.thehomeofcar.base.BaseFragment;
@@ -6,10 +6,10 @@ import com.jingjiang.thehomeofcar.base.BaseFragment;
 /**
  * Created by dllo on 16/5/10.
  */
-public class FilterFragment extends BaseFragment {
+public class DepreciateFragment extends BaseFragment {
     @Override
     public int initLayout() {
-        return R.layout.findcar_f_filter;
+        return R.layout.findcar_f_depreciate;
     }
 
     @Override

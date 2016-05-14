@@ -13,6 +13,7 @@ import com.jingjiang.thehomeofcar.base.BaseFragment;
 import com.jingjiang.thehomeofcar.bean.inrecommend.UseCarData;
 import com.jingjiang.thehomeofcar.inrecommend.adapter.UseCarAdapter;
 import com.jingjiang.thehomeofcar.widget.GsonRequest;
+import com.jingjiang.thehomeofcar.widget.MyRequestQueue;
 
 /**
  * Created by dllo on 16/5/9.
@@ -36,7 +37,6 @@ public class UseCarFragment extends BaseFragment {
 
     @Override
     public void initData() {
-        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
         GsonRequest<UseCarData> gsonRequest = new GsonRequest<>(Request.Method.GET,
                 "http://app.api.autohome.com.cn/autov5.0.0/news/newslist-pm2-c0-nt82-p1-s20-l0.json",
                 new Response.ErrorListener() {
@@ -51,7 +51,7 @@ public class UseCarFragment extends BaseFragment {
 
             }
         }, UseCarData.class);
-        requestQueue.add(gsonRequest);
+        MyRequestQueue.getRequestQueue().add(gsonRequest);
         recyclerView.setAdapter(useCarAdapter);
 
     }

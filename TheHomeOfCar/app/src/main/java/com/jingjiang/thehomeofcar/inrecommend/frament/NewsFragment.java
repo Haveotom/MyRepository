@@ -15,6 +15,7 @@ import com.jingjiang.thehomeofcar.inrecommend.adapter.FastReportAdapter;
 import com.jingjiang.thehomeofcar.inrecommend.adapter.NewestAdapter;
 import com.jingjiang.thehomeofcar.inrecommend.adapter.NewsAdapter;
 import com.jingjiang.thehomeofcar.widget.GsonRequest;
+import com.jingjiang.thehomeofcar.widget.MyRequestQueue;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,7 +44,6 @@ public class NewsFragment extends BaseFragment {
 
     @Override
     public void initData() {
-        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
         GsonRequest<NewsData> gsonRequest = new GsonRequest<>(Request.Method.GET,
                 "http://app.api.autohome.com.cn/autov5.0.0/news/newslist-pm1-c0-nt1-p1-s30-l0.json",
                 new Response.ErrorListener() {
@@ -59,7 +59,7 @@ public class NewsFragment extends BaseFragment {
 
             }
         }, NewsData.class);
-        requestQueue.add(gsonRequest);
+        MyRequestQueue.getRequestQueue().add(gsonRequest);
 
         recyclerView.setAdapter(newsAdapter);
     }

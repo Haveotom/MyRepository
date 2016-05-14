@@ -1,13 +1,17 @@
 package com.jingjiang.thehomeofcar.inrecommend.adapter;
 
 import android.content.Context;
+import android.support.annotation.IdRes;
+import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.jingjiang.thehomeofcar.BuildConfig;
 import com.jingjiang.thehomeofcar.R;
 import com.jingjiang.thehomeofcar.bean.inrecommend.NewestData;
 
@@ -36,7 +40,7 @@ public class NewestAdapter extends RecyclerView.Adapter<NewestAdapter.NewestView
 
     @Override
     public NewestViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_r_newest, parent,false);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_r_newest, parent, false);
         NewestViewHolder viewHolder = new NewestViewHolder(view);
         return viewHolder;
     }
@@ -44,9 +48,29 @@ public class NewestAdapter extends RecyclerView.Adapter<NewestAdapter.NewestView
     @Override
     public void onBindViewHolder(NewestViewHolder holder, int position) {
         holder.titleTv.setText(newestData.getResult().getNewslist().get(position).getTitle());
-        holder.countTv.setText(newestData.getResult().getNewslist().get(position).getReplycount()+"播放");
+        int replyCount = newestData.getResult().getNewslist().get(position).getReplycount();
+        int media = newestData.getResult().getNewslist().get(position).getMediatype();
+        if (media == 3) {
+            holder.countTv.setText(replyCount + "播放");
+
+        } else if (media == 2 || media == 1) {
+            holder.countTv.setText(replyCount + "评论");
+        } else if (media == 5) {
+            holder.countTv.setText(replyCount + "回帖");
+        } else {
+            holder.countTv.setText(replyCount + "图片");
+        }
         holder.timeTv.setText(newestData.getResult().getNewslist().get(position).getTime());
-        Picasso.with(context).load(newestData.getResult().getNewslist().get(position).getSmallpic()).resize(170,130).into(holder.iconIv);
+
+        if (media != 6) {
+            Picasso.with(context).load(newestData.getResult().getNewslist().get(position).getSmallpic().replace(" ", "")).
+                    error(R.mipmap.car).resize(170, 130).
+                    into(holder.iconIv);
+        } else {
+            Picasso.with(context).load(newestData.getResult().getNewslist().get(position).getIndexdetail()).into(holder.iconIv);
+            if (BuildConfig.DEBUG)
+                Log.d("NewestAdapter", newestData.getResult().getNewslist().get(position).getIndexdetail());
+        }
 
     }
 
@@ -63,4 +87,6 @@ public class NewestAdapter extends RecyclerView.Adapter<NewestAdapter.NewestView
             iconIv = (ImageView) itemView.findViewById(R.id.item_video_icon_iv);
         }
     }
+
+
 }

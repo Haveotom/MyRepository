@@ -1,4 +1,4 @@
-package com.jingjiang.thehomeofcar.infindcar;
+package com.jingjiang.thehomeofcar.infindcar.fragment;
 
 import com.jingjiang.thehomeofcar.R;
 import com.jingjiang.thehomeofcar.base.BaseFragment;

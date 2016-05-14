@@ -33,9 +33,9 @@
             android:layout_height="wrap_content"
             android:layout_alignBottom="@id/item_video_icon_iv"
             android:layout_alignLeft="@id/item_video_title_tv"
+            android:layout_marginBottom="@dimen/item_margin_small"
             android:paddingLeft="@dimen/item_margin_small"
             android:text="time"
-            android:layout_marginBottom="@dimen/item_margin_small"
             android:textColor="@color/grayword_less"
             android:textSize="@dimen/textsize_smallest" />
 
@@ -51,6 +51,7 @@
             android:textSize="@dimen/textsize_smallest" />
 
     </RelativeLayout>
+
 
 
 </LinearLayout>

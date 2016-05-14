@@ -8,10 +8,10 @@ import android.support.v4.view.ViewPager;
 import com.jingjiang.thehomeofcar.R;
 import com.jingjiang.thehomeofcar.adapter.FindCarAdapter;
 import com.jingjiang.thehomeofcar.base.BaseFragment;
-import com.jingjiang.thehomeofcar.infindcar.BrandFragment;
-import com.jingjiang.thehomeofcar.infindcar.DepreciateFragment;
-import com.jingjiang.thehomeofcar.infindcar.FilterFragment;
-import com.jingjiang.thehomeofcar.infindcar.SecondCarFragment;
+import com.jingjiang.thehomeofcar.infindcar.fragment.BrandFragment;
+import com.jingjiang.thehomeofcar.infindcar.fragment.DepreciateFragment;
+import com.jingjiang.thehomeofcar.infindcar.fragment.FilterFragment;
+import com.jingjiang.thehomeofcar.infindcar.fragment.SecondCarFragment;
 
 import java.util.ArrayList;
 import java.util.List;
