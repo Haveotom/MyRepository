@@ -20,7 +20,7 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/zero"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:orientation="vertical"
@@ -39,19 +39,19 @@
                         android:layout_gravity="center"
                         android:gravity="center"
                         android:paddingBottom="@dimen/padding_horizontal"
-                        android:text="我的收藏"
+                        android:text="@string/brand_text_shoucang"
                         android:textSize="@dimen/textsize_small" />
 
                 </LinearLayout>
 
                 <TextView
                     android:layout_width="@dimen/line_height"
-                    android:layout_height="30dp"
+                    android:layout_height="@dimen/thirty"
                     android:layout_gravity="center"
                     android:background="@color/grayword_less" />
 
                 <LinearLayout
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/zero"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:orientation="vertical"
@@ -70,19 +70,19 @@
                         android:layout_gravity="center"
                         android:gravity="center"
                         android:paddingBottom="@dimen/padding_horizontal"
-                        android:text="浏览历史"
+                        android:text="@string/brand_text_history"
                         android:textSize="@dimen/textsize_small" />
 
                 </LinearLayout>
 
                 <TextView
                     android:layout_width="@dimen/line_height"
-                    android:layout_height="30dp"
+                    android:layout_height="@dimen/thirty"
                     android:layout_gravity="center"
                     android:background="@color/grayword_less" />
 
                 <LinearLayout
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/zero"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:orientation="vertical"
@@ -101,7 +101,7 @@
                         android:layout_gravity="center"
                         android:gravity="center"
                         android:paddingBottom="@dimen/padding_horizontal"
-                        android:text="热销排行"
+                        android:text="@string/brand_text_rexiao"
                         android:textSize="@dimen/textsize_small" />
 
                 </LinearLayout>
@@ -115,143 +115,41 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/padding_horizontal"
-                android:text="热门品牌"
+                android:text="@string/brand_text_remen"
                 android:textSize="@dimen/textsize_small" />
 
             <TextView style="@style/Line" />
-
             <!--热门品牌-->
-            <LinearLayout
+            <com.jingjiang.thehomeofcar.widget.MyGridView
+                android:id="@+id/brand_gridview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="@dimen/padding_horizontal">
+                android:numColumns="5"
+                android:stretchMode="columnWidth" />
 
-                <LinearLayout style="@style/linerlayout_brand">
+            <TextView style="@style/Line" />
 
-                    <ImageView
-                        android:id="@+id/brand_dazhong"
-                        style="@style/image_brand" />
+            <TextView style="@style/lineHeight_background" />
 
-                    <TextView
-                        style="@style/text_brand"
-                        android:text="大众" />
-                </LinearLayout>
-
-
-                <LinearLayout style="@style/linerlayout_brand">
-
-                    <ImageView
-                        android:id="@+id/brand_bentian"
-                        style="@style/image_brand" />
-
-                    <TextView
-                        style="@style/text_brand"
-                        android:text="本田" />
-                </LinearLayout>
-
-
-                <LinearLayout style="@style/linerlayout_brand">
-
-                    <ImageView
-                        android:id="@+id/brand_fengtian"
-                        style="@style/image_brand" />
-
-                    <TextView
-                        style="@style/text_brand"
-                        android:text="丰田" />
-                </LinearLayout>
-
-
-                <LinearLayout style="@style/linerlayout_brand">
-
-                    <ImageView
-                        android:id="@+id/brand_xiandai"
-                        style="@style/image_brand" />
-
-                    <TextView
-                        style="@style/text_brand"
-                        android:text="现代" />
-                </LinearLayout>
-
-                <LinearLayout style="@style/linerlayout_brand">
-
-                    <ImageView
-                        android:id="@+id/brand_bieke"
-                        style="@style/image_brand" />
-
-                    <TextView
-                        style="@style/text_brand"
-                        android:text="别克" />
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/padding_horizontal"
-                android:orientation="horizontal"
-                android:padding="@dimen/padding_horizontal">
+                android:padding="@dimen/padding_horizontal"
+                android:text="@string/brand_text_zhuda"
+                android:textSize="@dimen/textsize_small" />
 
-                <LinearLayout style="@style/linerlayout_brand">
+            <TextView style="@style/Line" />
+            <!--主打车-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-                    <ImageView
-                        android:id="@+id/brand_fute"
-                        style="@style/image_brand" />
-
-                    <TextView
-                        style="@style/text_brand"
-                        android:text="福特" />
-                </LinearLayout>
-
-
-                <LinearLayout style="@style/linerlayout_brand">
-
-                    <ImageView
-                        android:id="@+id/brand_aodi"
-                        style="@style/image_brand" />
-
-                    <TextView
-                        style="@style/text_brand"
-                        android:text="奥迪" />
-                </LinearLayout>
-
-
-                <LinearLayout style="@style/linerlayout_brand">
-
-                    <ImageView
-                        android:id="@+id/brand_jili"
-                        style="@style/image_brand" />
-
-                    <TextView
-                        style="@style/text_brand"
-                        android:text="吉利汽车" />
-                </LinearLayout>
-
-
-                <LinearLayout style="@style/linerlayout_brand">
-
-                    <ImageView
-                        android:id="@+id/brand_hafo"
-                        style="@style/image_brand" />
-
-                    <TextView
-                        style="@style/text_brand"
-                        android:text="哈弗" />
-                </LinearLayout>
-
-                <LinearLayout style="@style/linerlayout_brand">
-
-                    <ImageView
-                        android:id="@+id/brand_richan"
-                        style="@style/image_brand" />
-
-                    <TextView
-                        style="@style/text_brand"
-                        android:text="日产" />
-                </LinearLayout>
-
+                <com.jingjiang.thehomeofcar.widget.MyGridView
+                    android:id="@+id/brand_main_gridview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:numColumns="3"
+                    android:stretchMode="columnWidth" />
             </LinearLayout>
 
             <TextView style="@style/Line" />
@@ -268,13 +166,13 @@
                     android:id="@+id/brand_listview"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:fadeScrollbars="true"
-                    ></com.jingjiang.thehomeofcar.widget.NoScrollListView>
+                    android:fadeScrollbars="true"></com.jingjiang.thehomeofcar.widget.NoScrollListView>
 
             </LinearLayout>
 
         </LinearLayout>
 
     </ScrollView>
+
 
 </LinearLayout>

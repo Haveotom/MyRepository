@@ -3,8 +3,11 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="colorRed">#ff0033</color>
+    <color name="red">#ff3366</color>
+    <color name="white">#ffffff</color>
     <!--线宽的颜色-->
-    <color name="wordColor">#56abe4</color>
+    <color name="wordColor_blue">#56abe4</color>
     <color name="grayBackground">#e8e8e8</color>
     <color name="colorLine">#cccccc</color>
     <color name="grayword_less">#999999</color>

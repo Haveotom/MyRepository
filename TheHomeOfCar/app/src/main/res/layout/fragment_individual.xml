@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -10,13 +11,13 @@
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="@dimen/zero"
             android:layout_height="match_parent"
             android:layout_marginLeft="@dimen/word_left"
             android:layout_weight="1"
             android:gravity="center_vertical"
             android:text="@string/individual_word"
-            android:textColor="@color/wordColor"
+            android:textColor="@color/wordColor_blue"
             android:textSize="@dimen/textsize_normal" />
 
         <ImageView
@@ -29,18 +30,18 @@
     </LinearLayout>
 
     <TextView
-        android:layout_width="35dp"
-        android:layout_height="2dp"
+        style="@style/little_line"
         android:layout_marginLeft="@dimen/padding_horizontal"
-        android:background="@color/wordColor" />
+        android:background="@color/wordColor_blue" />
 
     <TextView style="@style/Line" />
 
     <TextView
+        android:id="@+id/individual_login_tv"
         android:layout_width="match_parent"
         android:layout_height="@dimen/height_one_hundred"
         android:gravity="center"
-        android:text="立即登录,体验更多"
+        android:text="@string/individual_login"
         android:textColor="@color/grayWord"
         android:textSize="@dimen/textsize_normal" />
 
@@ -52,6 +53,7 @@
         android:orientation="horizontal">
 
         <LinearLayout
+            android:id="@+id/individual_zhanghao_ll"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -68,13 +70,13 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:padding="@dimen/activity_horizontal_margin"
-                android:text="账号登录" />
+                android:text="@string/individual_zhanghao" />
 
         </LinearLayout>
 
 
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="@dimen/zero"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:orientation="vertical">
@@ -90,12 +92,12 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:padding="@dimen/activity_horizontal_margin"
-                android:text="QQ登录" />
+                android:text="@string/individual_qq" />
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="@dimen/zero"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:orientation="vertical">
@@ -111,13 +113,13 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:padding="@dimen/activity_horizontal_margin"
-                android:text="微博登录" />
+                android:text="@string/individual_weibo" />
 
         </LinearLayout>
 
 
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="@dimen/zero"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:orientation="vertical">
@@ -133,7 +135,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:padding="@dimen/activity_horizontal_margin"
-                android:text="微信登录" />
+                android:text="@string/individual_weixin" />
 
         </LinearLayout>
 
@@ -143,30 +145,27 @@
     <TextView style="@style/Line" />
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/high_twenty"
-        android:background="@color/grayBackground" />
+       style="@style/individual_background"/>
 
     <TextView style="@style/Line" />
 
     <LinearLayout
+        android:id="@+id/individual_youhuiquan_ll"
         android:layout_width="match_parent"
         android:layout_height="@dimen/layout_height_fifty"
         android:orientation="horizontal">
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/wrap"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="@dimen/word_left"
             android:src="@mipmap/individual_youhuiquan" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/wrap"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="@dimen/word_left"
-            android:text="我的优惠券"
+            android:text="@string/individual_wode"
             android:textColor="@color/grayWord_much" />
     </LinearLayout>
 
@@ -180,18 +179,16 @@
         android:orientation="horizontal">
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/wrap"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="@dimen/word_left"
             android:src="@mipmap/individual_shoucang3" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/wrap"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="@dimen/word_left"
-            android:text="我的收藏"
+            android:text="@string/individual_shoucang"
             android:textColor="@color/grayWord_much" />
 
     </LinearLayout>
@@ -206,18 +203,16 @@
         android:orientation="horizontal">
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/wrap"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="@dimen/word_left"
             android:src="@mipmap/individual_shizhong1" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/wrap"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="@dimen/word_left"
-            android:text="浏览历史"
+            android:text="@string/individual_history"
             android:textColor="@color/grayWord_much" />
 
     </LinearLayout>
@@ -232,18 +227,16 @@
         android:orientation="horizontal">
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/wrap"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="@dimen/word_left"
             android:src="@mipmap/individual_caogao1" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/wrap"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="@dimen/word_left"
-            android:text="草稿箱"
+            android:text="@string/individual_caogao"
             android:textColor="@color/grayWord_much" />
 
     </LinearLayout>
@@ -251,9 +244,7 @@
     <TextView style="@style/Line" />
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/high_twenty"
-        android:background="@color/grayBackground" />
+        style="@style/individual_background"/>
 
     <TextView style="@style/Line" />
 
@@ -263,27 +254,23 @@
         android:orientation="horizontal">
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/wrap"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="@dimen/word_left"
             android:src="@mipmap/individual_shezhi1" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/wrap"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="@dimen/word_left"
-            android:text="设置"
+            android:text="@string/individual_shezhi"
             android:textColor="@color/grayWord_much" />
     </LinearLayout>
 
     <TextView style="@style/Line" />
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/high_twenty"
-        android:background="@color/grayBackground" />
+        style="@style/individual_background"/>
 
     <TextView style="@style/Line" />
 

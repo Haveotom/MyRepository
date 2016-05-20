@@ -41,7 +41,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
         holder.titleTv.setText(videoData.getResult().getList().get(position).getTitle());
         holder.countTv.setText(videoData.getResult().getList().get(position).getPlaycount() + "播放");
         holder.timeTv.setText(videoData.getResult().getList().get(position).getTime());
-        Picasso.with(context).load(videoData.getResult().getList().get(position).getSmallimg()).resize(170, 130).into(holder.iconIv);
+        Picasso.with(context).load(videoData.getResult().getList().get(position).getSmallimg()).resize(170, 120).into(holder.iconIv);
 
     }
 

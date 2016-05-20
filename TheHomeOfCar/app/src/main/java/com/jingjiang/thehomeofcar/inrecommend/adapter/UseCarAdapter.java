@@ -43,7 +43,7 @@ public class UseCarAdapter extends RecyclerView.Adapter<UseCarAdapter.UseCarView
         holder.timeTv.setText(useCarData.getResult().getNewslist().get(position).getTime());
         Picasso.with(context).load(
                 useCarData.getResult().getNewslist().get(position).getSmallpic()).
-                resize(170, 130).into(holder.iconIv);
+                resize(170, 120).into(holder.iconIv);
 
     }
 

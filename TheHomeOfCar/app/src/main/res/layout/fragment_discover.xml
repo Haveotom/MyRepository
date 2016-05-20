@@ -4,6 +4,32 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_height"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/discover_title"
+            android:textSize="@dimen/textsize_normal" />
+
+        <ImageView
+            android:id="@+id/discover_search_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:paddingLeft="@dimen/padding_horizontal"
+            android:paddingRight="@dimen/padding_horizontal"
+            android:src="@mipmap/search1" />
+    </FrameLayout>
+
+    <TextView style="@style/Line" />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -11,152 +37,124 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:orientation="vertical"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:background="@android:color/holo_purple"
+                android:background="@android:color/holo_blue_light"
                 android:gravity="center"
                 android:text="轮播图" />
 
-            <!--水平滑动的ScrollView-->
-            <HorizontalScrollView
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:scrollbars="none">
-                <!--上述为去掉滚动条-->
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/discover_car_media_rv"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="20dp"
-                        android:text="你好" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="20dp"
-                        android:text="你好" />
+            </android.support.v7.widget.RecyclerView>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="20dp"
-                        android:text="你好" />
+            <TextView style="@style/Line" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="20dp"
-                        android:text="你好" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="20dp"
-                        android:text="你好" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="20dp"
-                        android:text="你好" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="20dp"
-                        android:text="你好" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="20dp"
-                        android:text="你好" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="20dp"
-                        android:text="你好" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="20dp"
-                        android:text="你好" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="20dp"
-                        android:text="你好" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="20dp"
-                        android:text="你好" />
-                </LinearLayout>
-
-            </HorizontalScrollView>
-
-            <TextView
-                style="@style/lineHeight_background" />
+            <TextView style="@style/lineHeight_background" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingLeft="@dimen/padding_horizontal"
-                android:text="活动专区"
-                android:textColor="@android:color/black" />
+                android:padding="@dimen/padding_horizontal"
+                android:text="@string/discover_huodong"
+                android:textColor="@color/grayWord_much" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:orientation="horizontal"
-                android:paddingLeft="@dimen/padding_horizontal"
-                android:paddingRight="@dimen/padding_horizontal">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="0dp"
+                <com.jingjiang.thehomeofcar.widget.MyGridView
+                    android:id="@+id/discover_activity_area_gv"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="第一部分" />
+                    android:numColumns="3"
+                    android:stretchMode="columnWidth" />
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="第一部分" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="第一部分" />
             </LinearLayout>
 
-            <TextView
-                style="@style/lineHeight_background" />
+            <TextView style="@style/Line" />
 
-            <ListView
+            <TextView style="@style/lineHeight_background" />
+
+            <com.jingjiang.thehomeofcar.widget.MyGridView
+                android:id="@+id/discover_car_business_gv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:numColumns="2"
+                android:stretchMode="columnWidth" />
+
+            <TextView style="@style/Line" />
+
+            <TextView style="@style/lineHeight_background" />
+
+            <TextView
+                android:id="@+id/discover_hot_sell_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_horizontal"
+                android:text="特惠热卖"
+                android:textColor="@color/grayWord_much" />
+
+            <TextView style="@style/Line" />
+
+            <com.jingjiang.thehomeofcar.widget.MyGridView
+                android:id="@+id/discover_hot_sell_gv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:numColumns="2"
+                android:stretchMode="columnWidth" />
+
+            <TextView style="@style/Line" />
+
+            <TextView style="@style/lineHeight_background" />
+
+            <TextView
+                android:id="@+id/discover_hot_sell_title1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_horizontal"
+                android:text="品牌精品"
+                android:textColor="@color/grayWord_much" />
+
+            <TextView style="@style/Line" />
+
+            <com.jingjiang.thehomeofcar.widget.MyGridView
+                android:id="@+id/discover_hot_sell_brand_gv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:numColumns="2"
+                android:stretchMode="columnWidth" />
+            <TextView style="@style/Line" />
+            <TextView style="@style/lineHeight_background" />
+            <TextView
+                android:id="@+id/discover_hot_sell_title2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_horizontal"
+                android:text="商品列表"
+                android:textColor="@color/grayWord_much" />
+
+            <TextView style="@style/Line" />
+
+
+            <com.jingjiang.thehomeofcar.widget.NoScrollListView
                 android:id="@+id/discover_lv"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="@dimen/zero"
                 android:layout_weight="1">
 
-            </ListView>
+            </com.jingjiang.thehomeofcar.widget.NoScrollListView>
         </LinearLayout>
     </ScrollView>
 

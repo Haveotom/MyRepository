@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/item_margin_small">
+
+    <ImageView
+        android:id="@+id/item_brandlist_icon_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/item_margin_small"
+        android:src="@mipmap/ic_launcher" />
+
+    <TextView
+        android:id="@+id/item_brandlist_title_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/item_brandlist_icon_iv"
+        android:layout_marginLeft="@dimen/item_margin_small"
+        android:layout_marginTop="@dimen/padding_ten"
+        android:layout_toRightOf="@id/item_brandlist_icon_iv"
+        android:text="name"
+        android:textColor="@color/grayWord_much"
+        android:textSize="@dimen/textsize_little" />
+
+    <TextView
+        android:id="@+id/item_brandlist_adinfo_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/item_brandlist_title_tv"
+        android:layout_below="@id/item_brandlist_title_tv"
+        android:layout_marginTop="@dimen/bottom_small"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:singleLine="false"
+        android:text="adinfo"
+        android:textColor="@color/grayword_less"
+        android:textSize="@dimen/textsize_smallest" />
+
+    <TextView
+        android:id="@+id/item_brandlist_price_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/item_brandlist_title_tv"
+        android:layout_below="@id/item_brandlist_adinfo_tv"
+        android:text="price"
+        android:textColor="@color/red"
+        android:textSize="@dimen/textsize_little" />
+
+    <TextView
+        android:id="@+id/item_brandlist_fctprice_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/item_brandlist_price_tv"
+        android:layout_marginLeft="@dimen/item_margin_small"
+        android:layout_toRightOf="@id/item_brandlist_price_tv"
+        android:text="fctprice"
+        android:textColor="@color/grayword_less"
+        android:textSize="@dimen/textsize_smallest" />
+
+
+</RelativeLayout>

@@ -18,7 +18,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="@dimen/newest_height_hundredfifty"
            >
 
 
@@ -35,7 +35,7 @@
                 <LinearLayout
                     android:id="@+id/newest_linearlayout"
                     android:layout_width="wrap_content"
-                    android:layout_height="10dp"
+                    android:layout_height="@dimen/padding_ten"
                     android:background="@android:color/holo_orange_dark"
                     android:gravity="right|bottom"
                     android:orientation="horizontal"></LinearLayout>

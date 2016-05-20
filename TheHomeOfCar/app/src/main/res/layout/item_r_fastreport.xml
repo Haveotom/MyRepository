@@ -16,8 +16,8 @@
             android:id="@+id/item_fastreport_newspaper"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="报商"
-            android:textColor="@color/wordColor"
+
+            android:textColor="@color/wordColor_blue"
             android:textSize="@dimen/textsize_smallest" />
 
         <TextView
@@ -26,7 +26,6 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/item_fastreport_newspaper"
             android:layout_marginTop="@dimen/item_margin_small"
-            android:text="标题"
             android:textColor="@color/grayWord_much" />
 
         <TextView
@@ -35,7 +34,6 @@
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@id/item_fastreport_topic"
             android:layout_alignParentRight="true"
-            android:text="浏览次数"
             android:textColor="@color/grayword_less"
             android:textSize="@dimen/textsize_smallest" />
 
@@ -52,7 +50,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/item_fastreport_picture"
-            android:text="time"
             android:textColor="@color/grayword_less"
             android:textSize="@dimen/textsize_smallest" />
     </RelativeLayout>

@@ -20,6 +20,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".searchui.SearchActivity"></activity>
+        <activity android:name=".inindividual.LoginAty" />
+        <activity android:name=".indiscover.activity.PublicActivity"/>
     </application>
 
 </manifest>

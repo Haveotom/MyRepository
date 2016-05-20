@@ -18,11 +18,11 @@
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="25dp"
+            android:layout_height="@dimen/twentyfive"
             android:background="@color/grayBackground"
             android:gravity="center_vertical"
-            android:paddingLeft="@dimen/padding_horizontal"
-            android:text="24小时内热门"
+            android:paddingLeft="@dimen/high_fifteen"
+            android:text="@string/hotpost_text_remen"
             android:textSize="@dimen/textsize_smallest" />
     </com.bartoszlipinski.recyclerviewheader2.RecyclerViewHeader>
 

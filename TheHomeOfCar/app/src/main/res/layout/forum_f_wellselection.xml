@@ -11,17 +11,17 @@
         android:orientation="horizontal">
 
         <HorizontalScrollView
-            android:layout_width="0dp"
+            android:layout_width="@dimen/zero"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:scrollbars="none">
+
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
-
-                android:paddingTop="2dp">
+                android:paddingTop="@dimen/bottom_smallest">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -101,7 +101,9 @@
                     android:layout_margin="10dp"
                     android:text="是我" />
             </LinearLayout>
+
         </HorizontalScrollView>
+
 
         <ImageView
 
@@ -112,6 +114,8 @@
             android:src="@mipmap/fangkuai1" />
 
     </LinearLayout>
+
+    <TextView style="@style/Line" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/wellselection_rv"

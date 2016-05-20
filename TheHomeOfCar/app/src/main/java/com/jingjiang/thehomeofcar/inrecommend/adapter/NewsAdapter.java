@@ -42,7 +42,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
         holder.countTv.setText(newsData.getResult().getNewslist().get(position).getReplycount() + "评论");
         holder.timeTv.setText(newsData.getResult().getNewslist().get(position).getTime());
         Picasso.with(context).load(
-                newsData.getResult().getNewslist().get(position).getSmallpic()).resize(170, 130).into(holder.iconIv);
+                newsData.getResult().getNewslist().get(position).getSmallpic()).resize(170, 120).into(holder.iconIv);
 
     }
 

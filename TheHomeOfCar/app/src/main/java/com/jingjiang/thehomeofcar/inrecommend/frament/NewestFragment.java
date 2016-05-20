@@ -95,11 +95,8 @@ public class NewestFragment extends BaseFragment  {
 
             @Override
             public void onResponse(NewestData response) {
-
                 newestAdapter.setNewestData(response);
 //                newestRecycleAdapter.setNewestData(response);
-
-
             }
         }, NewestData.class);
         MyRequestQueue.getRequestQueue().add(newestDataGsonRequest);

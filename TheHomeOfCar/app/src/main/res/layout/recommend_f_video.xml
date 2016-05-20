@@ -14,7 +14,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:paddingLeft="@dimen/activity_horizontal_margin"
-            android:text="全部"
+            android:text="@string/video_textquanbu"
             android:textSize="@dimen/textsize_small" />
 
         <ImageView

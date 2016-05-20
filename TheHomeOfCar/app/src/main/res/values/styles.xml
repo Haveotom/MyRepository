@@ -2,13 +2,20 @@
 
     <!-- Base application theme. -->
     <!--去掉标题-->
+    <!--日间模式-->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:background">#ffffff</item>
         <!--去掉标题栏-->
         <!--<item name="android:windowActionBar">true</item>-->
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+    </style>
+    <!--夜间模式-->
+    <style name="AppTheme.night" parent="AppTheme">
+
+
     </style>
 
     <style name="Line">
@@ -26,7 +33,7 @@
     <style name="lineHeight_background">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/padding_horizontal</item>
-        <item name="android:background">@color/colorLine</item>
+        <item name="android:background">@color/grayBackground</item>
     </style>
 
     <style name="image_brand">
@@ -50,6 +57,22 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_weight">1</item>
         <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="little_line">
+        <item name="android:layout_width">35dp</item>
+        <item name="android:layout_height">2dp</item>
+    </style>
+
+    <style name="wrap">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+    </style>
+
+    <style name="individual_background">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/high_fifteen</item>
+        <item name="android:background">@color/grayBackground</item>
     </style>
 
 </resources>

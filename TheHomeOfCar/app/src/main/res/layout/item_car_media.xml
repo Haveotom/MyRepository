@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+
+    android:padding="@dimen/high_fifteen">
+
+    <ImageView
+        android:id="@+id/item_car_media_icon_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:src="@mipmap/ic_launcher" />
+
+    <TextView
+        android:id="@+id/item_car_media_name_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/bottom_small"
+        android:paddingLeft="@dimen/item_margin_small"
+        android:paddingRight="@dimen/item_margin_small"
+        android:paddingTop="@dimen/item_margin_small"
+
+        android:text="name"
+        android:textSize="@dimen/textsize_smallest" />
+
+</LinearLayout>

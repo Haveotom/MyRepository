@@ -9,7 +9,7 @@
         android:id="@+id/item_brand_letter_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="字母"
+        android:text="letter"
         android:textSize="@dimen/textsize_smallest" />
 
     <LinearLayout

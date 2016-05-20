@@ -14,7 +14,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:paddingLeft="@dimen/activity_horizontal_margin"
-            android:text="全部品牌"
+            android:text="@string/fastreport_text_quanbu"
             android:textSize="@dimen/textsize_small" />
 
         <ImageView
@@ -28,8 +28,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginLeft="@dimen/recommend_text_left"
-            android:text="全部级别"
+            android:layout_marginLeft="@dimen/thirty"
+            android:text="@string/fastreport_text_jibie"
             android:textSize="@dimen/textsize_small" />
 
         <ImageView

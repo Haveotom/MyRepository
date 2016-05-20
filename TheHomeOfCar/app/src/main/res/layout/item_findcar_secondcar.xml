@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/item_margin_small">
+
+        <ImageView
+            android:id="@+id/item_secondcar_icon_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:id="@+id/item_secondcar_brand_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/item_secondcar_icon_iv"
+            android:layout_marginLeft="@dimen/item_margin_small"
+            android:layout_toRightOf="@id/item_secondcar_icon_iv"
+            android:text="name" />
+
+        <TextView
+            android:id="@+id/item_secondcar_price_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/item_secondcar_icon_iv"
+            android:layout_alignLeft="@id/item_secondcar_brand_tv"
+            android:text="price"
+            android:textColor="@android:color/holo_red_light" />
+
+        <TextView
+            android:id="@+id/item_secondcar_miles_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/item_secondcar_brand_tv"
+            android:layout_below="@id/item_secondcar_brand_tv"
+            android:text="mile"
+            android:textColor="@color/grayword_less"
+            android:textSize="@dimen/textsize_small" />
+
+        <TextView
+            android:id="@+id/item_secondcar_time_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/item_secondcar_miles_tv"
+            android:layout_marginLeft="@dimen/bottom_small"
+            android:layout_toRightOf="@id/item_secondcar_miles_tv"
+            android:text="time"
+            android:textColor="@color/grayword_less"
+            android:textSize="@dimen/textsize_small" />
+
+        <TextView
+            android:id="@+id/item_secondcar_business"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/item_secondcar_miles_tv"
+            android:layout_marginLeft="@dimen/bottom_small"
+            android:layout_toRightOf="@id/item_secondcar_time_tv"
+            android:text="business"
+            android:textColor="@color/grayword_less"
+            android:textSize="@dimen/textsize_small" />
+
+        <TextView
+            android:id="@+id/item_secondcar_zhibao_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/item_secondcar_price_tv"
+            android:layout_alignParentRight="true"
+            android:background="@android:color/holo_blue_light"
+            android:padding="@dimen/bottom_smallest"
+            android:text="质保"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/textsize_smallest" />
+
+
+    </RelativeLayout>
+
+
+</LinearLayout>

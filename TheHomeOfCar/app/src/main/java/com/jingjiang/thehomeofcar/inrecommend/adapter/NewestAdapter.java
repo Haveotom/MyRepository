@@ -9,6 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.jingjiang.thehomeofcar.BuildConfig;
@@ -62,22 +64,37 @@ public class NewestAdapter extends RecyclerView.Adapter<NewestAdapter.NewestView
         }
         holder.timeTv.setText(newestData.getResult().getNewslist().get(position).getTime());
 
-        if (media != 6) {
+        if (newestData.getResult().getNewslist().get(position).getSmallpic() != "") {
             Picasso.with(context).load(newestData.getResult().getNewslist().get(position).getSmallpic().replace(" ", "")).
-                    error(R.mipmap.car).resize(170, 130).
+                    error(R.mipmap.ic_launcher).resize(170, 120).
                     into(holder.iconIv);
         } else {
-            Picasso.with(context).load(newestData.getResult().getNewslist().get(position).getIndexdetail()).into(holder.iconIv);
-            if (BuildConfig.DEBUG)
-                Log.d("NewestAdapter", newestData.getResult().getNewslist().get(position).getIndexdetail());
+            holder.layout.setVisibility(View.VISIBLE);
+
+
+            String url = newestData.getResult().getNewslist().get(position).getIndexdetail();
+            Log.d("NewestAdapter", newestData.getResult().getNewslist().get(position).getIndexdetail());
+            String[] urls = null;
+            urls = url.split(",");
+            Log.d("NewestAdapter2", urls[0].substring(10));
+            Picasso.with(context).load(urls[0].substring(10)).resize(200, 130).into(holder.iconOneIv);
+            Picasso.with(context).load(urls[1]).resize(200, 130).into(holder.iconTwoIv);
+            Picasso.with(context).load(urls[2]).resize(200, 130).into(holder.iconThreeIv);
+            holder.pTitleTv.setText(newestData.getResult().getNewslist().get(position).getTitle());
+            holder.pTimeTv.setText(newestData.getResult().getNewslist().get(position).getTime());
+            holder.pCountTv.setText(newestData.getResult().getNewslist().get(position).getReplycount() + "图片");
+
         }
+
 
     }
 
 
     class NewestViewHolder extends RecyclerView.ViewHolder {
-        TextView titleTv, countTv, timeTv;
-        ImageView iconIv;
+        TextView titleTv, countTv, timeTv, pTitleTv, pTimeTv, pCountTv;
+        ImageView iconIv, iconOneIv, iconTwoIv, iconThreeIv;
+        LinearLayout layout;
+        RelativeLayout relativeLayout;
 
         public NewestViewHolder(View itemView) {
             super(itemView);
@@ -85,6 +102,14 @@ public class NewestAdapter extends RecyclerView.Adapter<NewestAdapter.NewestView
             countTv = (TextView) itemView.findViewById(R.id.item_video_count_tv);
             timeTv = (TextView) itemView.findViewById(R.id.item_video_time_tv);
             iconIv = (ImageView) itemView.findViewById(R.id.item_video_icon_iv);
+            pTitleTv = (TextView) itemView.findViewById(R.id.item_video2_title_tv);
+            pTimeTv = (TextView) itemView.findViewById(R.id.item_video2_time_tv);
+            pCountTv = (TextView) itemView.findViewById(R.id.item_video2_count_tv);
+            iconOneIv = (ImageView) itemView.findViewById(R.id.item_video2_icon1_iv);
+            iconTwoIv = (ImageView) itemView.findViewById(R.id.item_video2_icon2_iv);
+            iconThreeIv = (ImageView) itemView.findViewById(R.id.item_video2_icon3_iv);
+            layout = (LinearLayout) itemView.findViewById(R.id.newest_picture_ll);
+            relativeLayout = (RelativeLayout) itemView.findViewById(R.id.relative_layout);
         }
     }
 

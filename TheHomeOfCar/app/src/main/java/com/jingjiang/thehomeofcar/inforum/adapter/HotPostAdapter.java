@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.jingjiang.thehomeofcar.R;
+import com.jingjiang.thehomeofcar.bean.inforum.HotPostData;
 
 import java.util.List;
 
@@ -17,14 +18,14 @@ import java.util.List;
  */
 public class HotPostAdapter extends RecyclerView.Adapter<HotPostAdapter.HotpostViewHolder> {
     private Context context;
-    private List<String> data;
+    private HotPostData hotPostData;
 
     public HotPostAdapter(Context context) {
         this.context = context;
     }
 
-    public void setData(List<String> data) {
-        this.data = data;
+    public void setHotPostData(HotPostData hotPostData) {
+        this.hotPostData = hotPostData;
         notifyDataSetChanged();
     }
 
@@ -36,18 +37,25 @@ public class HotPostAdapter extends RecyclerView.Adapter<HotPostAdapter.HotpostV
     }
 
     @Override
-    public void onBindViewHolder(HotpostViewHolder holder, int position) {
-        holder.titleTv.setText(data.get(position));
-        holder.forumTv.setText(data.get(position));
-        holder.timeTv.setText(data.get(position));
-        holder.numberTv.setText(data.get(position));
-
+    public int getItemCount() {
+        return hotPostData != null ? hotPostData.getResult().getList().size() : 0;
     }
 
     @Override
-    public int getItemCount() {
-        return data != null ? data.size() : 0;
+    public void onBindViewHolder(HotpostViewHolder holder, int position) {
+        holder.titleTv.setText(hotPostData.getResult().getList().get(position).getTitle());
+        holder.timeTv.setText(hotPostData.getResult().getList().get(position).getPostdate());
+        holder.numberTv.setText(hotPostData.getResult().getList().get(position).getReplycounts() + "回帖");
+        holder.forumTv.setText(hotPostData.getResult().getList().get(position).getBbsname());
+        if (hotPostData.getResult().getList().get(position).getIspictopic() == 1) {
+            holder.pictureIv.setVisibility(View.VISIBLE);
+        } else {
+            holder.pictureIv.setVisibility(View.INVISIBLE);
+        }
+
+
     }
+
 
     class HotpostViewHolder extends RecyclerView.ViewHolder {
         TextView titleTv, forumTv, timeTv, numberTv;
