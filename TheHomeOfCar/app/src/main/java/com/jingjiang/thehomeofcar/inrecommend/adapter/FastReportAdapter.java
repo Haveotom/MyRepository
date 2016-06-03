@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.jingjiang.thehomeofcar.R;
 import com.jingjiang.thehomeofcar.bean.inrecommend.FastReportData;
+import com.jingjiang.thehomeofcar.myinterface.MyRvOnClickListener;
 
 import it.sephiroth.android.library.picasso.Picasso;
 
@@ -19,10 +20,15 @@ import it.sephiroth.android.library.picasso.Picasso;
 public class FastReportAdapter extends RecyclerView.Adapter<FastReportAdapter.FastReportViewHolder> {
     private Context context;//为了注入布局使用
     private FastReportData fastReportData;
+    private MyRvOnClickListener myRvOnClickListener;
 
     public void setFastReportDatas(FastReportData fastReportData) {
         this.fastReportData = fastReportData;
         notifyDataSetChanged();
+    }
+
+    public void setMyRvOnClickListener(MyRvOnClickListener myRvOnClickListener) {
+        this.myRvOnClickListener = myRvOnClickListener;
     }
 
     //赋值context,,否则用不了
@@ -39,7 +45,7 @@ public class FastReportAdapter extends RecyclerView.Adapter<FastReportAdapter.Fa
     @Override
     public FastReportViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.item_r_fastreport, parent, false);
-        FastReportViewHolder viewHolder = new FastReportViewHolder(view);
+        FastReportViewHolder viewHolder = new FastReportViewHolder(view, myRvOnClickListener);
         return viewHolder;
     }
 
@@ -50,23 +56,32 @@ public class FastReportAdapter extends RecyclerView.Adapter<FastReportAdapter.Fa
         holder.titleTv.setText(fastReportData.getResult().getList().get(position).getTitle());
         holder.reviewcountTv.setText(fastReportData.getResult().getList().get(position).getReviewcount() + "人浏览");
         holder.timeTv.setText(fastReportData.getResult().getList().get(position).getCreatetime());
-        Picasso.with(context).load(fastReportData.getResult().getList().get(position).getBgimage()).resize(800,350).into(holder.pictureTv);
+        Picasso.with(context).load(fastReportData.getResult().getList().get(position).getBgimage()).resize(800, 350).into(holder.pictureTv);
 
 
     }
 
 
-    class FastReportViewHolder extends RecyclerView.ViewHolder {
+    class FastReportViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView typeNameTv, titleTv, reviewcountTv, timeTv;
         ImageView pictureTv;
 
-        public FastReportViewHolder(View itemView) {
+        public FastReportViewHolder(View itemView, MyRvOnClickListener listener) {
             super(itemView);
             typeNameTv = (TextView) itemView.findViewById(R.id.item_fastreport_newspaper);
             titleTv = (TextView) itemView.findViewById(R.id.item_fastreport_topic);
             reviewcountTv = (TextView) itemView.findViewById(R.id.item_fastreport_browser);
             timeTv = (TextView) itemView.findViewById(R.id.item_fastreport_time);
             pictureTv = (ImageView) itemView.findViewById(R.id.item_fastreport_picture);
+            myRvOnClickListener = listener;
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            if (myRvOnClickListener != null) {
+                myRvOnClickListener.onItemClick(v, getPosition());
+            }
         }
     }
 

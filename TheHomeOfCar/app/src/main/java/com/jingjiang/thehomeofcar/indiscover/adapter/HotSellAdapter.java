@@ -1,5 +1,6 @@
 package com.jingjiang.thehomeofcar.indiscover.adapter;
 
+import android.content.Context;
 import android.graphics.Paint;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,13 +20,16 @@ import it.sephiroth.android.library.picasso.Picasso;
  */
 public class HotSellAdapter extends BaseAdapter {
     private HotSellData hotSellData;
+    private Context context;
+
+    public HotSellAdapter(Context context) {
+        this.context = context;
+    }
 
     public void setHotSellData(HotSellData hotSellData) {
         this.hotSellData = hotSellData;
         notifyDataSetChanged();
     }
-
-
 
 
     @Override
@@ -47,26 +51,29 @@ public class HotSellAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder = null;
         if (convertView == null) {
-            convertView = LayoutInflater.from(MyApplication.context).inflate(R.layout.item_hot_sell, null);
+            convertView = LayoutInflater.from(context).inflate(R.layout.item_hot_sell, null);
             holder = new ViewHolder(convertView);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
         int i = 0;
+        if (hotSellData.getResult().getModulelist().size() == 2) {
+            Picasso.with(context).load(hotSellData.getResult().getModulelist().get(i).getList().get(position).getLogo())
+                    .into(holder.iconIv);
 
-        Picasso.with(MyApplication.context).load(hotSellData.getResult().getModulelist().get(i).getList().get(position).getLogo())
-                .into(holder.iconIv);
-
-        holder.titleTv.setText(hotSellData.getResult().getModulelist().get(i).getList().get(position).getTitle());
-        holder.adinfoTv.setText(hotSellData.getResult().getModulelist().get(i).getList().get(position).getAdinfo());
-        holder.priceTv.setText(hotSellData.getResult().getModulelist().get(i).getList().get(position).getPrice());
-        holder.fctPriceTv.setText(hotSellData.getResult().getModulelist().get(i).getList().get(position).getFctprice());
-        //设置textview的线
-        holder.fctPriceTv.getPaint().setAntiAlias(true);//抗锯齿
+            holder.titleTv.setText(hotSellData.getResult().getModulelist().get(i).getList().get(position).getTitle());
+            holder.adinfoTv.setText(hotSellData.getResult().getModulelist().get(i).getList().get(position).getAdinfo());
+            holder.priceTv.setText(hotSellData.getResult().getModulelist().get(i).getList().get(position).getPrice());
+            holder.fctPriceTv.setText(hotSellData.getResult().getModulelist().get(i).getList().get(position).getFctprice());
+            //设置textview的线
+            holder.fctPriceTv.getPaint().setAntiAlias(true);//抗锯齿
 //        holder.fctPriceTv.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);//中划线
-        holder.fctPriceTv.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG | Paint.ANTI_ALIAS_FLAG);//设置中线并加清晰
+            holder.fctPriceTv.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG | Paint.ANTI_ALIAS_FLAG);//设置中线并加清晰
 //        holder.fctPriceTv.getPaint().setFlags(0);//取消设置的划线
+
+        }
+
 
         return convertView;
     }

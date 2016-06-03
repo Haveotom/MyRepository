@@ -93,4 +93,5 @@ public abstract class BaseFragment extends Fragment {
         return (T) getView().findViewById(id);
     }
 
+
 }

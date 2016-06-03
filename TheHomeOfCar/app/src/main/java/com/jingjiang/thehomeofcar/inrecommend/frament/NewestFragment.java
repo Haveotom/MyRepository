@@ -1,63 +1,38 @@
 package com.jingjiang.thehomeofcar.inrecommend.frament;
 
-import android.os.Handler;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
+import android.content.Intent;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-
-import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-
-import com.android.volley.Request;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.bartoszlipinski.recyclerviewheader2.RecyclerViewHeader;
-import com.jingjiang.thehomeofcar.BuildConfig;
 import com.jingjiang.thehomeofcar.R;
 import com.jingjiang.thehomeofcar.base.BaseFragment;
+import com.jingjiang.thehomeofcar.base.MyApplication;
 import com.jingjiang.thehomeofcar.bean.inrecommend.NewestData;
+import com.jingjiang.thehomeofcar.inrecommend.activity.RecommendPublicAty;
 import com.jingjiang.thehomeofcar.inrecommend.adapter.NewestAdapter;
-import com.jingjiang.thehomeofcar.widget.GsonRequest;
-import com.jingjiang.thehomeofcar.widget.MyRequestQueue;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import it.sephiroth.android.library.picasso.Picasso;
+import com.jingjiang.thehomeofcar.myinterface.MyRvOnClickListener;
+import com.jingjiang.thehomeofcar.widget.VolleySingle;
+import com.youth.banner.Banner;
 
 
 /**
  * Created by dllo on 16/5/9.
  */
-public class NewestFragment extends BaseFragment  {
+public class NewestFragment extends BaseFragment {
     private NewestAdapter newestAdapter;
     private RecyclerView recyclerView;
+    //刷新
+    private SwipeRefreshLayout refresh;
+    private RecyclerViewHeader header;
     //轮播图
-    private ViewPager viewPager;
-    private LinearLayout layout;//放点的布局
-    private int currentIndex = 300;//当前页面下标
-//    private NewestRecycleAdapter newestRecycleAdapter;
-    private Long lastTime = System.currentTimeMillis();//获取系统当前时间
-    private Handler handler = new Handler();
-    private List<NewestData> newestDataList;
-    private NewestData newestData;
-    private Runnable runnable = new Runnable() {
-        @Override
-        public void run() {
-            //主线程
-            if ((System.currentTimeMillis() - lastTime) > 3000) {
-                currentIndex++;
-                viewPager.setCurrentItem(currentIndex);//
-                lastTime = System.currentTimeMillis();//更新时间
-            }
-            handler.postDelayed(runnable, 3000);//延迟3秒
-        }
-    };
+    private NewestData data;
+    private Banner banner;
+
 
     @Override
     public int initLayout() {
@@ -66,143 +41,100 @@ public class NewestFragment extends BaseFragment  {
 
     @Override
     public void initView() {
-
         recyclerView = bindView(R.id.newest_rv);
-        RecyclerViewHeader header = bindView(R.id.newest_header_rv);
+        header = bindView(R.id.newest_header_rv);
+//        refresh = bindView(R.id.newest_refresh);
+//        refresh.setOnRefreshListener(this);
         newestAdapter = new NewestAdapter(getContext());
-
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        header.attachTo(recyclerView);
+        recyclerView.setOverScrollMode(View.OVER_SCROLL_NEVER);
 
-        //轮播图适配器
-        viewPager = bindView(R.id.newest_viewpager);
-        layout = bindView(R.id.newest_linearlayout);
-//        newestRecycleAdapter = new NewestRecycleAdapter();
-
-
+        banner = bindView(R.id.newest_recycle_picture);
     }
 
     @Override
     public void initData() {
-        GsonRequest<NewestData> newestDataGsonRequest = new GsonRequest<>(Request.Method.GET,
+
+        //轮播图
+        VolleySingle.getInstance()._addRequest(
                 "http://app.api.autohome.com.cn/autov4.2.5/news/newslist-a2-pm1-v4.2.5-c0-nt0-p1-s30-l0.html",
-                new Response.ErrorListener() {//失败
+                new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
 
                     }
-                }, new Response.Listener<NewestData>() {//成功
+                }, new Response.Listener<NewestData>() {
+                    @Override
+                    public void onResponse(final NewestData response) {
+                        data = response;
+                        newestAdapter.setNewestData(response);
+//
+                        String[] images = new String[response.getResult().getFocusimg().size()];
+                        for (int i = 0; i < response.getResult().getFocusimg().size(); i++) {
+                            images[i] = response.getResult().getFocusimg().get(i).getImgurl();
+                        }
+                        banner.setDelayTime(3000);
+                        banner.setImages(images);
+                        banner.setOnBannerClickListener(new Banner.OnBannerClickListener() {
+                            @Override
+                            public void OnBannerClick(View view, int position) {
+                                Intent intent = new Intent(getContext(), RecommendPublicAty.class);
+                                String recycleUrl = "";
+                                //实现点击事件
+                                if (data.getResult().getFocusimg().get(position-1).getJumpurl() != "") {
+                                    intent.putExtra("URL", data.getResult().getFocusimg().get(position-1).getJumpurl());
+                                    startActivity(intent);
+                                } else if (data.getResult().getFocusimg().get(position-1).getJumpurl() == "") {
 
+                                    if (data.getResult().getFocusimg().get(position-1).getMediatype() == 1) {
+                                        recycleUrl = "http://cont.app.autohome.com.cn/autov5.0.0/content/news/newscontent-n%@-t0.json";
+
+                                    } else if (data.getResult().getFocusimg().get(position-1).getMediatype() == 2) {
+                                        recycleUrl = "http://v.autohome.com.cn/v_4_%@.html";
+                                    } else {
+                                        recycleUrl = "http://forum.app.autohome.com.cn/autov5.0.0/forum/club/topiccontent-a2-pm2-v5.0.0-t%@-o0-p1-s20-c1-nt0-fs0-sp0-al0-cw320.json";
+                                    }
+                                    recycleUrl = recycleUrl.replace("%@", String.valueOf(data.getResult().getFocusimg().get(position-1).getId()));
+                                    intent.putExtra("URL", recycleUrl);
+                                    startActivity(intent);
+
+                                }
+                            }
+
+                        });
+                    }
+
+                }, NewestData.class);
+
+        //http://223.99.255.20/news.app.autohome.com.cn/news_v5.9.0/news/shuokelist-pm2-s20-lastid0.json
+        //http://cont.app.autohome.com.cn/cont_v5.8.0/content/news/shuokecontent-a2-pm2-v5.9.0-n520122-nt0-lz0-p1-fs0-cw360.json
+        newestAdapter.setMyRvOnClickListener(new MyRvOnClickListener() {
             @Override
-            public void onResponse(NewestData response) {
-                newestAdapter.setNewestData(response);
-//                newestRecycleAdapter.setNewestData(response);
+            public void onItemClick(View view, int position) {
+                Intent intent = new Intent(MyApplication.context, RecommendPublicAty.class);
+                String url = "";
+                if (data.getResult().getNewslist().get(position).getMediatype() == 3) {
+                    url = "http://v.autohome.com.cn/v_4_%@.html";
+
+                } else if (data.getResult().getNewslist().get(position).getMediatype() == 2) {//说客
+                    url = "http://cont.app.autohome.com.cn/cont_v5.8.0/content/news/shuokecontent-a2-pm2-v5.9.0-n%@-nt0-lz0-p1-fs0-cw360.json ";
+
+                } else if (data.getResult().getNewslist().get(position).getMediatype() == 5) {
+                    url = "http://forum.app.autohome.com.cn/autov5.0.0/forum/club/topiccontent-a2-pm2-v5.0.0-t%@-o0-p1-s20-c1-nt0-fs0-sp0-al0-cw320.json";
+                } else {
+                    url = "http://cont.app.autohome.com.cn/autov4.2.5/content/News/newscontent-a2-pm1-v4.2.5-n%@-lz0-sp0-nt0-sa1-p0-c1-fs0-cw320.html";
+
+                }
+                url = url.replace("%@", String.valueOf(data.getResult().getNewslist().get(position).getId()));
+                intent.putExtra("URL", url);
+                startActivity(intent);
+
             }
-        }, NewestData.class);
-        MyRequestQueue.getRequestQueue().add(newestDataGsonRequest);
+
+
+        });
+        header.attachTo(recyclerView);
         recyclerView.setAdapter(newestAdapter);
-
-        //小圆点
-        //添加图片地址
-
-
-//        for (int i = 0; i < image.size(); i++) {
-//            ImageView point = new ImageView(getContext());
-//            point.setImageResource(R.mipmap.no);
-//            layout.addView(point);
-//        }
-        //初始化适配器
-//        viewPager.setAdapter(newestRecycleAdapter);
-        //设置当前view
-        viewPager.setCurrentItem(300);
-//        viewPager.setOnPageChangeListener(this);
-        //延时开启线程
-        handler.postDelayed(runnable, 3000);
-
-//        轮播图加载数据
-
     }
 
-//    @Override
-//    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-//
-//    }
-//
-//    @Override
-//    public void onDestroy() {
-//        super.onDestroy();
-//        handler.removeCallbacks(runnable);
-//    }
-//
-//    @Override
-//    public void onPageSelected(int position) {
-//        currentIndex = position;
-//        int index = position % newestData.getResult().getFocusimg().size();
-//        //自定义方法,设置小圆点
-//        setCurrentSelected(index);
-//        lastTime = System.currentTimeMillis();
-//
-//    }
-//
-//    //小圆点
-//    private void setCurrentSelected(int currentIndex) {
-//        for (int i = 0; i < layout.getChildCount(); i++) {
-//            ImageView child = (ImageView) layout.getChildAt(i);//设置每一个小圆点
-//            if (i == currentIndex) {
-//                child.setImageResource(R.mipmap.yes);
-//            } else {
-//                child.setImageResource(R.mipmap.no);
-//            }
-//        }
-//
-//    }
-//
-//    @Override
-//    public void onPageScrollStateChanged(int state) {
-//
-//    }
-
-
-    //    轮播图
-//    public class NewestRecycleAdapter extends PagerAdapter {
-//        private NewestData newestData;
-//        int index;
-//        List<NewestData> newestDataList;
-//
-//        public void setNewestDataList(List<NewestData> newestDataList) {
-//            this.newestDataList = newestDataList;
-//            notifyDataSetChanged();
-//        }
-//
-//        public void setNewestData(NewestData newestData) {
-//            this.newestData = newestData;
-//            notifyDataSetChanged();
-//        }
-//
-//        @Override
-//        public int getCount() {
-//            //返回最大值 使用户看不到边界
-//            return Integer.MAX_VALUE;
-//        }
-//
-//        @Override
-//        public boolean isViewFromObject(View view, Object object) {
-//            return view == object;
-//        }
-//
-//        @Override
-//        public Object instantiateItem(ViewGroup container, int position) {
-//            ImageView iconIv = bindView(R.id.newest_icon);
-//            //需要循环才能确定当前页
-//            index = position % newestData.getResult().getFocusimg().size();
-//            //添加图片
-//            Picasso.with(getContext()).load(newestData.getResult().getFocusimg().get(position).getImgurl()).into(iconIv);
-//            container.addView(iconIv);
-//            return newestData.getResult().getFocusimg().get(index);
-//        }
-//
-//        @Override
-//        public void destroyItem(ViewGroup container, int position, Object object) {
-//        }
-//    }
 }

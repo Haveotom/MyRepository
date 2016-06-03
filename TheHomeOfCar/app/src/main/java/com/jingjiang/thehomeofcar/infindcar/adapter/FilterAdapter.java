@@ -17,6 +17,7 @@ import it.sephiroth.android.library.picasso.Picasso;
 
 /**
  * Created by dllo on 16/5/16.
+ * 筛选的adapter
  */
 public class FilterAdapter extends BaseAdapter {
     private FilterData filterData;
@@ -28,6 +29,7 @@ public class FilterAdapter extends BaseAdapter {
 
     public void setFilterData(FilterData filterData) {
         this.filterData = filterData;
+        //通知数据改变
         notifyDataSetChanged();
     }
 
@@ -50,7 +52,7 @@ public class FilterAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder = null;
         if (convertView == null) {
-            convertView = LayoutInflater.from(context).inflate(R.layout.item_findcar_filter, null);
+            convertView = LayoutInflater.from(context).inflate(R.layout.item_findcar_filter, parent, false);
             holder = new ViewHolder(convertView);
             convertView.setTag(holder);
         } else {
@@ -61,9 +63,11 @@ public class FilterAdapter extends BaseAdapter {
         Picasso.with(context).load(filterData.getResult().getSeries().get(position).getThumburl()).
                 resize(140, 100).into(holder.iconTv);
         if (filterData.getResult().getSeries().get(position).getCornericon() != "") {
+            //如果有该条数据,则让排行榜的图片显示出来
             holder.paihangIv.setVisibility(View.VISIBLE);
             holder.numberTv.setText(filterData.getResult().getSeries().get(position).getCornericon());
         } else {
+            //否则,则不显示
             holder.paihangIv.setVisibility(View.INVISIBLE);
         }
 

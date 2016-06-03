@@ -4,9 +4,11 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="activity_title_horizontal_margin">16dp</dimen>
     <!--布局的高度-->
+    <dimen name="hundred_eighty">180dp</dimen>
     <dimen name="newest_height_hundredfifty">150dp</dimen>
     <dimen name="height_one_hundred">100dp</dimen>
     <dimen name="layout_height_eighty">70dp</dimen>
+    <dimen name="sixty_height">60dp</dimen>
 
     <dimen name="layout_height_fifty">50dp</dimen>
     <dimen name="individual_line_marginleft">50dp</dimen>
@@ -19,10 +21,14 @@
     <dimen name="word_left">15dp</dimen>
     <!--间隔的距离-->
     <dimen name="high_twenty">20dp</dimen>
+    <dimen name="high_sixteen">18dp</dimen>
     <dimen name="high_fifteen">15dp</dimen>
     <!--搜索图的左右padding-->
+    <dimen name="padding_twelve">12dp</dimen>
+    <dimen name="padding_eleven">11dp</dimen>
     <dimen name="padding_ten">10dp</dimen>
     <dimen name="padding_horizontal">8dp</dimen>
+    <dimen name="padding_six">6dp</dimen>
     <dimen name="item_margin_small">5dp</dimen>
     <dimen name="bottom_small">3dp</dimen>
     <dimen name="bottom_smallest">2dp</dimen>
@@ -36,5 +42,11 @@
     <dimen name="textsize_little">14sp</dimen>
     <dimen name="textsize_small">12sp</dimen>
     <dimen name="textsize_smallest">10sp</dimen>
+    <dimen name="textsize_eight">8sp</dimen>
+
+    <dimen name="sliding_menu">80dp</dimen>
+    <dimen name="shadow_width">15dp</dimen>
+    <dimen name="twohundred">200dp</dimen>
+    <dimen name="hundred_thirty">130dp</dimen>
 
 </resources><!---->

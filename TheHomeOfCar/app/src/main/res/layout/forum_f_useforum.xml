@@ -1,116 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_gravity="right"
+    tools:openDrawer="right">
 
-    <RelativeLayout
-        style="@style/margin"
+    <include
+        layout="@layout/forum_f_useforum_layout"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/layout_height_fifty">
+        android:layout_height="match_parent" />
 
-        <ImageView
-            android:id="@+id/useforum_car"
-            style="@style/wrap"
-            android:layout_centerVertical="true"
-            android:src="@mipmap/useforum_car1" />
-
-        <TextView
-            android:id="@+id/useforum_topic"
-            style="@style/wrap"
-            android:layout_alignTop="@id/useforum_car"
-            android:layout_marginLeft="@dimen/padding_horizontal"
-            android:layout_toRightOf="@id/useforum_car"
-            android:text="@string/useforum_text_first"
-            android:textColor="@color/grayWord_much"
-            android:textSize="@dimen/textsize_normal" />
-
-        <TextView
-           style="@style/wrap"
-            android:layout_alignBottom="@id/useforum_car"
-            android:layout_alignLeft="@id/useforum_topic"
-            android:text="@string/useforum_text_littleone"
-
-            android:textColor="@color/grayword_less"
-            android:textSize="@dimen/textsize_smallest" />
-    </RelativeLayout>
-
-    <TextView style="@style/Line" />
-
-    <RelativeLayout
-        style="@style/margin"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/layout_height_fifty">
-
-        <ImageView
-            android:id="@+id/useforum_area"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:src="@mipmap/useforum_diqu1" />
-
-        <TextView
-            android:id="@+id/useforum_areatopic"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@id/useforum_area"
-            android:layout_marginLeft="@dimen/padding_horizontal"
-            android:layout_toRightOf="@id/useforum_area"
-            android:text="@string/useforum_text_two"
-            android:textColor="@color/grayWord_much"
-            android:textSize="@dimen/textsize_normal" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@id/useforum_area"
-            android:layout_alignLeft="@id/useforum_areatopic"
-            android:text="@string/useforum_text_littletwo"
-            android:textColor="@color/grayword_less"
-            android:textSize="@dimen/textsize_smallest" />
-    </RelativeLayout>
-
-    <TextView style="@style/Line" />
-
-    <RelativeLayout
-        style="@style/margin"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/layout_height_fifty">
-
-        <ImageView
-            android:id="@+id/useforum_flag"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:src="@mipmap/useforum_flag1" />
-
-        <TextView
-            android:id="@+id/useforum_flagtopic"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@id/useforum_flag"
-            android:layout_marginLeft="@dimen/padding_horizontal"
-            android:layout_toRightOf="@id/useforum_flag"
-            android:text="@string/useforum_text_three"
-            android:textColor="@color/grayWord_much"
-            android:textSize="@dimen/textsize_normal" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@id/useforum_flag"
-            android:layout_alignLeft="@id/useforum_flagtopic"
-            android:text="@string/useforum_text_littlethree"
-            android:textColor="@color/grayword_less"
-            android:textSize="@dimen/textsize_smallest" />
-    </RelativeLayout>
-
-    <TextView style="@style/Line" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
+    <android.support.design.widget.NavigationView
+        android:id="@+id/forum_useforum_navigation"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:background="@color/grayBackground"></LinearLayout>
+        android:layout_gravity="right"
+        android:fitsSystemWindows="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/title_height">
+
+                <TextView
+                    android:id="@+id/drawer_car_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="车系论坛"
+                    android:textColor="@color/grayWord_much"
+                    android:textSize="@dimen/textsize_normal" />
+
+                <TextView
+                    android:id="@+id/drawer_close_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/padding_horizontal"
+                    android:text="关闭"
+                    android:textColor="@color/blue_middle" />
+            </RelativeLayout>
+
+            <TextView style="@style/Line" />
+
+            <ExpandableListView
+                android:id="@+id/useforum_expandable_lv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"></ExpandableListView>
+        </LinearLayout>
+    </android.support.design.widget.NavigationView>
 
 
-</LinearLayout>
+</android.support.v4.widget.DrawerLayout>

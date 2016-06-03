@@ -44,7 +44,9 @@ public class FindCarFragment extends BaseFragment {
         findCarAdapter.setFragments(fragments);
         viewPager.setAdapter(findCarAdapter);
         tabLayout.setupWithViewPager(viewPager);
+        //给Tablayout的字体设置颜色的变化
         tabLayout.setTabTextColors(Color.GRAY, Color.rgb(0, 180, 255));
+        //设置下划线的颜色
         tabLayout.setSelectedTabIndicatorColor(Color.rgb(0, 180, 255));
         searchIv = bindView(R.id.findcar_search);
         searchIv.setOnClickListener(new View.OnClickListener() {

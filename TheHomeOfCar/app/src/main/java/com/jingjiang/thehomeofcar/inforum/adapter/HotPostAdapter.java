@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.jingjiang.thehomeofcar.R;
 import com.jingjiang.thehomeofcar.bean.inforum.HotPostData;
+import com.jingjiang.thehomeofcar.myinterface.MyRvOnClickListener;
 
 import java.util.List;
 
@@ -19,9 +20,18 @@ import java.util.List;
 public class HotPostAdapter extends RecyclerView.Adapter<HotPostAdapter.HotpostViewHolder> {
     private Context context;
     private HotPostData hotPostData;
+    private MyRvOnClickListener myRvOnClickListener;
 
     public HotPostAdapter(Context context) {
+
         this.context = context;
+    }
+
+
+    //监听的set方法
+    public void setMyRvOnClickListener(MyRvOnClickListener myRvOnClickListener) {
+        this.myRvOnClickListener = myRvOnClickListener;
+
     }
 
     public void setHotPostData(HotPostData hotPostData) {
@@ -32,7 +42,7 @@ public class HotPostAdapter extends RecyclerView.Adapter<HotPostAdapter.HotpostV
     @Override
     public HotpostViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.item_forum_hotpost, null);
-        HotpostViewHolder viewHolder = new HotpostViewHolder(view);
+        HotpostViewHolder viewHolder = new HotpostViewHolder(view, myRvOnClickListener);
         return viewHolder;
     }
 
@@ -57,17 +67,29 @@ public class HotPostAdapter extends RecyclerView.Adapter<HotPostAdapter.HotpostV
     }
 
 
-    class HotpostViewHolder extends RecyclerView.ViewHolder {
+    class HotpostViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView titleTv, forumTv, timeTv, numberTv;
         ImageView pictureIv;
 
-        public HotpostViewHolder(View itemView) {
+        public HotpostViewHolder(View itemView, MyRvOnClickListener listener) {//添加监听
             super(itemView);
             titleTv = (TextView) itemView.findViewById(R.id.item_video_title_tv);
             forumTv = (TextView) itemView.findViewById(R.id.item_hotpost_forum__tv);
             timeTv = (TextView) itemView.findViewById(R.id.item_video_time_tv);
             numberTv = (TextView) itemView.findViewById(R.id.item_hotpost_number_tv);
             pictureIv = (ImageView) itemView.findViewById(R.id.item_hotpost_picture_Iv);
+            myRvOnClickListener = listener;
+            itemView.setOnClickListener(this);
+        }
+
+        //监听方法
+        @Override
+        public void onClick(View v) {
+            //当监听不等于空的时候
+            if (myRvOnClickListener != null) {
+                //就对该位置的item设置监听
+                myRvOnClickListener.onItemClick(v, getPosition());
+            }
         }
     }
 }

@@ -26,7 +26,7 @@ public class BrandHotAdapter extends BaseAdapter {
 
     public void setBrandHotData(BrandHotData brandHotData) {
         this.brandHotData = brandHotData;
-        notifyDataSetChanged();
+        notifyDataSetChanged();//通知数据改变
     }
 
     @Override

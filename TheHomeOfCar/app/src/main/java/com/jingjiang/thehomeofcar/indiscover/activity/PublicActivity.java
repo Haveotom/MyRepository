@@ -1,12 +1,17 @@
 package com.jingjiang.thehomeofcar.indiscover.activity;
 
+import android.content.Intent;
+import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.jingjiang.thehomeofcar.R;
 import com.jingjiang.thehomeofcar.base.BaseActivity;
+import com.jingjiang.thehomeofcar.base.MyApplication;
+import com.jingjiang.thehomeofcar.inindividual.LoginAty;
 
 
 /**
@@ -15,10 +20,11 @@ import com.jingjiang.thehomeofcar.base.BaseActivity;
 public class PublicActivity extends BaseActivity {
     private WebView webView;
     private TextView titleTv;
+    private LinearLayout exit;
 
     @Override
     protected int getLayout() {
-        return R.layout.activity_public;
+        return R.layout.aty_public;
     }
 
     @Override
@@ -26,38 +32,31 @@ public class PublicActivity extends BaseActivity {
         titleTv = bindView(R.id.aty_public_title_tv);
         webView = bindView(R.id.aty_public_other_webview);
         WebSettings webSettings = webView.getSettings();
-        webSettings.setJavaScriptEnabled(true);
-        webSettings.setAllowFileAccess(true);
-        webSettings.setBuiltInZoomControls(true);
-        /* 汽车音频 */
-        String carMediaUrl = getIntent().getStringExtra("carMediaUrl");
-        webView.loadUrl(carMediaUrl);
+        webSettings.setJavaScriptEnabled(true);//支持JavaScript脚本
+        webSettings.setAllowFileAccess(true);//支持可以访问文件
+        webSettings.setBuiltInZoomControls(true);//使页面支持缩放,显示缩放按钮
+        //从来源处获取传过来的Extra值,,通过key值确定
+        String url = getIntent().getStringExtra("url");
 
-        /*  活动专区 */
-        String activityUrl = getIntent().getStringExtra("activityUrl");
-        webView.loadUrl(activityUrl);
-
-        /* 车商城 */
-        String extra = getIntent().getStringExtra("url");
         titleTv.setText(getIntent().getStringExtra("title"));
-        webView.loadUrl(extra);
-
-        /* 特惠热卖 */
-        String hostSellUrl = getIntent().getStringExtra("hostSellUrl");
-        webView.loadUrl(hostSellUrl);
-
-
-        /* 品牌精品 */
-
-        String brandUrl = getIntent().getStringExtra("brandUrl");
-        webView.loadUrl(brandUrl);
-
-        /* 商品列表 */
-        String brandListUrl = getIntent().getStringExtra("brandListUrl");
-        webView.loadUrl(brandListUrl);
-
-
+        webView.loadUrl(url);
         webView.setWebViewClient(new WebViewClient());
+        exit = bindView(R.id.aty_public_exit);
+        exit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+//        bindView(R.id.aty_forum_detail_login).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(MyApplication.context, LoginAty.class));
+//            }
+//        });
+
+
     }
 
     @Override

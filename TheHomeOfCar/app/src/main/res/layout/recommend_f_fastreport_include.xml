@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_height"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/fastreport_all_brand_ll"
+            android:layout_width="@dimen/height_one_hundred"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/fastreport_all_brand_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:text="@string/fastreport_text_quanbu"
+                android:textSize="@dimen/textsize_small" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/item_margin_small"
+                android:src="@mipmap/recommend_fastreport_guide" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/fastreport_all_rank_ll"
+            android:layout_width="@dimen/height_one_hundred"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:id="@+id/fastreport_all_rank_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/fastreport_text_jibie"
+                android:textSize="@dimen/textsize_small" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/item_margin_small"
+                android:src="@mipmap/recommend_fastreport_guide" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView style="@style/Line" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/fastreport_rv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+
+</LinearLayout>

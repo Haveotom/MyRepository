@@ -27,6 +27,7 @@ public class ActivityAreaAdapter extends BaseAdapter {
 
     public void setActivityAreaData(ActivityAreaData activityAreaData) {
         this.activityAreaData = activityAreaData;
+        //通知数据改变
         notifyDataSetChanged();
     }
 

@@ -491,6 +491,8 @@ public class NewestData {
         }
 
         public static class NewslistBean {
+
+
             private int id;
             private String title;
             private int mediatype;
@@ -502,6 +504,8 @@ public class NewestData {
             private int pagecount;
             private int jumppage;
             private String lasttime;
+
+            /*****************************/
 
             public int getId() {
                 return id;

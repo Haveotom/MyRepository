@@ -41,8 +41,9 @@ public class ForumFragment extends BaseFragment {
         forumAdapter.setFragments(fragments);
         viewPager.setAdapter(forumAdapter);
         tabLayout.setupWithViewPager(viewPager);
+        //字体颜色
         tabLayout.setTabTextColors(Color.GRAY, Color.rgb(0, 180, 255));
-
+        //下划线颜色
         tabLayout.setSelectedTabIndicatorColor(Color.rgb(0, 180, 255));
         bindView(R.id.forum_search_iv).setOnClickListener(new View.OnClickListener() {
             @Override

@@ -38,6 +38,8 @@ public class RecommendFragment extends BaseFragment {
     public void initView() {
         tabLayout = bindView(R.id.recommend_tablayout);
         viewPager = bindView(R.id.recommend_viewpager);
+
+
         initFragment();//将fragment数据初始化
         recommendAdapter = new RecommendAdapter(getChildFragmentManager());//必须要用Child,因为是儿子管它自己,不能父亲管儿子
         //将数据放到Adapter里
@@ -73,6 +75,10 @@ public class RecommendFragment extends BaseFragment {
 
     @Override
     public void initData() {
+//        viewPager.setCurrentItem(2);
+        viewPager.setCurrentItem(0);
+//        viewPager.setCurrentItem(3);
+//        viewPager.setCurrentItem(0);
 
     }
 }

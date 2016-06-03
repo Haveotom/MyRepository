@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_height"
+        android:orientation="horizontal">
+
+
+        <!--<ImageView-->
+        <!--style="@style/wrap"-->
+        <!--android:layout_gravity="center_vertical"-->
+        <!--android:paddingLeft="@dimen/item_margin_small"-->
+        <!--android:src="@mipmap/login_return2" />-->
+
+        <TextView
+            android:id="@+id/findcar_public_close"
+            style="@style/wrap"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/padding_ten"
+            android:text="@string/depreciate_close"
+            android:textColor="@color/wordColor_blue"
+            android:textSize="@dimen/textsize_normal" />
+    </LinearLayout>
+
+    <TextView style="@style/Line" />
+
+    <WebView
+        android:id="@+id/findcar_public_webview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></WebView>
+
+</LinearLayout>

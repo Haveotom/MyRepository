@@ -6,7 +6,11 @@
     <color name="colorRed">#ff0033</color>
     <color name="red">#ff3366</color>
     <color name="white">#ffffff</color>
+    <color name="orange">#ea8010</color>
+    <color name="green">#76b773</color>
+
     <!--线宽的颜色-->
+    <color name="wight_much">#f4f4f4</color>
     <color name="wordColor_blue">#56abe4</color>
     <color name="grayBackground">#e8e8e8</color>
     <color name="colorLine">#cccccc</color>

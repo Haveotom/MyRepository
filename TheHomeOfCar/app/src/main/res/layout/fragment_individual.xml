@@ -2,8 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    >
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -21,6 +20,7 @@
             android:textSize="@dimen/textsize_normal" />
 
         <ImageView
+            android:id="@+id/individual_sun_night"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="center"
@@ -144,8 +144,7 @@
 
     <TextView style="@style/Line" />
 
-    <TextView
-       style="@style/individual_background"/>
+    <TextView style="@style/individual_background" />
 
     <TextView style="@style/Line" />
 
@@ -243,8 +242,7 @@
 
     <TextView style="@style/Line" />
 
-    <TextView
-        style="@style/individual_background"/>
+    <TextView style="@style/individual_background" />
 
     <TextView style="@style/Line" />
 
@@ -269,8 +267,7 @@
 
     <TextView style="@style/Line" />
 
-    <TextView
-        style="@style/individual_background"/>
+    <TextView style="@style/individual_background" />
 
     <TextView style="@style/Line" />
 

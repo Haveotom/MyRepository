@@ -24,6 +24,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //在进去之后的页面就显示本页
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.replace(R.id.replace_fragment, new RecommendFragment());//FramLayout布局替换
@@ -38,6 +39,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     @Override
     protected void initView() {
         for (int i = 0; i < ids.length; i++) {
+            //给每页设置监听
             bindView(ids[i]).setOnClickListener(this);
         }
         recommendBtn = bindView(R.id.main_recommend_btn);

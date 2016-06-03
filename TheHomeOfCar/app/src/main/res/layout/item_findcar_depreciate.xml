@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/item_depreciate_relativelayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding_horizontal"
+        android:padding="@dimen/item_margin_small">
+
+        <ImageView
+            android:id="@+id/item_depreciate_icon_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/item_margin_small"
+            android:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:id="@+id/item_depreciate_title_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/item_depreciate_icon_iv"
+            android:layout_marginLeft="@dimen/padding_horizontal"
+            android:layout_toRightOf="@id/item_depreciate_icon_iv"
+            android:text="title"
+            android:textColor="@color/grayWord_much"
+            android:typeface="monospace" />
+
+        <TextView
+            android:id="@+id/item_depreciate_title_right_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/item_depreciate_title_tv"
+            android:layout_marginLeft="@dimen/padding_ten"
+            android:layout_toRightOf="@id/item_depreciate_title_tv"
+            android:ellipsize="end"
+            android:text="t"
+            android:textColor="@color/grayWord_much" />
+
+        <TextView
+            android:id="@+id/item_depreciate_price_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/item_depreciate_title_tv"
+            android:layout_below="@id/item_depreciate_title_tv"
+            android:layout_marginTop="@dimen/padding_horizontal"
+            android:text="price"
+            android:textColor="@color/red" />
+
+        <TextView
+            android:id="@+id/item_depreciate_delete_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/item_depreciate_price_tv"
+            android:layout_marginLeft="@dimen/item_margin_small"
+            android:layout_toRightOf="@id/item_depreciate_price_tv"
+            android:text="money"
+            android:textColor="@color/grayword_less"
+            android:textSize="@dimen/textsize_small"
+            android:typeface="monospace" />
+
+        <TextView
+            android:id="@+id/item_depreciate_depreciate_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/item_depreciate_price_tv"
+            android:layout_alignParentRight="true"
+            android:paddingRight="@dimen/padding_ten"
+            android:text="降价"
+            android:textColor="@color/green" />
+
+        <TextView
+            android:id="@+id/item_depreciate_diqu_tv"
+            style="@style/depreciate"
+            android:layout_alignLeft="@id/item_depreciate_icon_iv"
+            android:layout_below="@id/item_depreciate_icon_iv"
+            android:layout_marginLeft="@dimen/bottom_small"
+            android:layout_marginTop="@dimen/padding_horizontal"
+            android:textColor="@color/grayWord" />
+
+        <TextView
+            android:id="@+id/item_depreciate_name_tv"
+            style="@style/depreciate"
+            android:layout_alignBaseline="@id/item_depreciate_diqu_tv"
+            android:layout_marginLeft="@dimen/padding_ten"
+            android:layout_toRightOf="@id/item_depreciate_diqu_tv"
+            android:textColor="@color/grayWord" />
+
+        <TextView
+            android:id="@+id/item_depreciate_distance_tv"
+            style="@style/depreciate"
+            android:layout_alignBaseline="@id/item_depreciate_diqu_tv"
+            android:layout_marginLeft="@dimen/padding_ten"
+            android:layout_toRightOf="@id/item_depreciate_name_tv"
+            android:textColor="@color/grayWord" />
+
+        <TextView
+            android:id="@+id/item_depreciate_sell_tv"
+            style="@style/depreciate"
+            android:layout_alignBaseline="@id/item_depreciate_diqu_tv"
+            android:layout_marginLeft="@dimen/padding_ten"
+            android:layout_toRightOf="@id/item_depreciate_distance_tv"
+            android:textColor="@color/grayWord" />
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding_horizontal"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="@dimen/zero"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/linearlayout_frame"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="@dimen/padding_horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/jisuanqi1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/bottom_small"
+                android:text="@string/depreciate_jisuan"
+                android:textColor="@color/wordColor_blue"
+                android:textSize="@dimen/textsize_small" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/item_depreciate_call_ll"
+            android:layout_width="@dimen/zero"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/linearlayout_frame"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="@dimen/padding_horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/dianhua1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/bottom_small"
+                android:text="@string/depreciate_call"
+                android:textColor="@color/wordColor_blue"
+                android:textSize="@dimen/textsize_small" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="24h"
+                android:textColor="@color/wordColor_blue"
+                android:textSize="@dimen/textsize_smallest" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="@dimen/zero"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/linearlayout_frame"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="@dimen/padding_horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/renminbi1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/bottom_small"
+                android:text="@string/depreciate_xundijia"
+                android:textColor="@color/wordColor_blue"
+                android:textSize="@dimen/textsize_small" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView style="@style/lineHeight_background" />
+
+
+</LinearLayout>

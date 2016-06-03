@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:id="@+id/brand_scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/high_twenty"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/layout_height_eighty"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/brand_my_collect"
+                    android:layout_width="@dimen/zero"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:padding="@dimen/padding_horizontal">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:paddingTop="@dimen/item_margin_small"
+                        android:src="@mipmap/individual_shoucang5" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:paddingBottom="@dimen/padding_horizontal"
+                        android:text="@string/brand_text_shoucang"
+                        android:textSize="@dimen/textsize_small" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="@dimen/line_height"
+                    android:layout_height="@dimen/thirty"
+                    android:layout_gravity="center"
+                    android:background="@color/grayword_less" />
+
+                <LinearLayout
+                    android:id="@+id/brand_browser_history"
+                    android:layout_width="@dimen/zero"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:padding="@dimen/padding_horizontal">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:paddingTop="@dimen/item_margin_small"
+                        android:src="@mipmap/individual_shizhong4" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:paddingBottom="@dimen/padding_horizontal"
+                        android:text="@string/brand_text_history"
+                        android:textSize="@dimen/textsize_small" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="@dimen/line_height"
+                    android:layout_height="@dimen/thirty"
+                    android:layout_gravity="center"
+                    android:background="@color/grayword_less" />
+
+                <LinearLayout
+                    android:id="@+id/brand_hot_rank"
+                    android:layout_width="@dimen/zero"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:padding="@dimen/padding_horizontal">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:paddingTop="@dimen/item_margin_small"
+                        android:src="@mipmap/paihangbang2" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:paddingBottom="@dimen/padding_horizontal"
+                        android:text="@string/brand_text_rexiao"
+                        android:textSize="@dimen/textsize_small" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView style="@style/Line" />
+
+            <TextView style="@style/lineHeight_background" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_horizontal"
+                android:text="@string/brand_text_remen"
+                android:textSize="@dimen/textsize_small" />
+
+            <TextView style="@style/Line" />
+            <!--热门品牌-->
+            <com.jingjiang.thehomeofcar.widget.MyGridView
+                android:id="@+id/brand_gridview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:numColumns="5"
+                android:stretchMode="columnWidth" />
+
+            <TextView style="@style/Line" />
+
+            <TextView style="@style/lineHeight_background" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_horizontal"
+                android:text="@string/brand_text_zhuda"
+                android:textSize="@dimen/textsize_small" />
+
+            <TextView style="@style/Line" />
+            <!--主打车-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.jingjiang.thehomeofcar.widget.MyGridView
+                    android:id="@+id/brand_main_gridview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:numColumns="3"
+                    android:stretchMode="columnWidth" />
+            </LinearLayout>
+
+            <TextView style="@style/Line" />
+
+
+            <!--listview-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <com.jingjiang.thehomeofcar.widget.MyExpandableListView
+                    android:id="@+id/brand_listview"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/zero"
+                    android:layout_weight="1"
+                    android:fadeScrollbars="false"
+                    android:scrollbars="none" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</LinearLayout>

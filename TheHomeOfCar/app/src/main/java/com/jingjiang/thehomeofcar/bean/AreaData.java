@@ -5,6 +5,7 @@ import java.util.List;
 /**
  * Created by dllo on 16/5/10.
  * 地区
+ * http://comm.app.autohome.com.cn/news/province-pm2-ts0.json
  */
 public class AreaData {
 

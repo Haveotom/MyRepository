@@ -18,6 +18,8 @@ import it.sephiroth.android.library.picasso.Picasso;
 
 /**
  * Created by dllo on 16/5/17.
+ * 细节 http://223.99.255.20/cars.app.autohome.com.cn/carinfo_v5.9.0/cars/seriessummary-pm2-s793-t-c210200.json
+ * 114 http://223.99.255.20/cars.app.autohome.com.cn/carinfo_v5.9.0/cars/seriessummary-pm2-s3290-t-c210200.json
  */
 public class BrandMainAdapter extends BaseAdapter {
     private BrandMainData mainData;
@@ -29,7 +31,7 @@ public class BrandMainAdapter extends BaseAdapter {
 
     public void setMainData(BrandMainData mainData) {
         this.mainData = mainData;
-        notifyDataSetChanged();
+        notifyDataSetChanged();//通知数据改变
     }
 
     @Override
@@ -50,15 +52,16 @@ public class BrandMainAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder = null;
+        //当为空时
         if (convertView == null) {
             convertView = LayoutInflater.from(context).inflate(R.layout.item_brand_main_gridview, null);
             holder = new ViewHolder(convertView);
             convertView.setTag(holder);
-        } else {
+        } else {//不为空时,直接获取
             holder = (ViewHolder) convertView.getTag();
         }
         holder.nameTv.setText(mainData.getResult().getList().get(position).getSeriesname());
-        Picasso.with(MyApplication.context).load(mainData.getResult().getList().get(position).getImg()).
+        Picasso.with(context).load(mainData.getResult().getList().get(position).getImg()).
                 resize(200,140).
                 into(holder.iconIv);
         return convertView;

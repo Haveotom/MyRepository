@@ -75,4 +75,26 @@
         <item name="android:background">@color/grayBackground</item>
     </style>
 
+    <style name="padding">
+        <item name="android:paddingRight">@dimen/padding_ten</item>
+        <item name="android:paddingLeft">@dimen/padding_ten</item>
+        <item name="android:paddingBottom">@dimen/item_margin_small</item>
+        <item name="android:paddingTop">@dimen/item_margin_small</item>
+    </style>
+
+    <style name="height_width">
+        <item name="android:layout_width">60dp</item>
+        <item name="android:layout_height">25dp</item>
+    </style>
+
+
+    <style name="depreciate">
+        <item name="android:textColor">@color/grayBackground</item>
+        <item name="android:textSize">@dimen/textsize_smallest</item>
+        <item name="android:padding">@dimen/bottom_smallest</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@color/grayBackground</item>
+    </style>
+
 </resources>

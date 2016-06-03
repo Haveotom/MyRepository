@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_height"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/aty_forum_detail_exit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/wrap"
+                android:layout_gravity="center_vertical"
+                android:paddingLeft="@dimen/item_margin_small"
+                android:src="@mipmap/login_return2" />
+
+            <TextView
+                style="@style/wrap"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/item_margin_small"
+                android:text="@string/fanhui"
+                android:textColor="@color/wordColor_blue"
+                android:textSize="@dimen/textsize_normal" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/aty_forum_detail_zhuanfa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/padding_ten"
+                android:layout_marginTop="@dimen/padding_eleven"
+                android:src="@mipmap/forum_zhuanfa" />
+
+            <ImageView
+                android:id="@+id/aty_forum_detail_wujiaoxing"
+                android:layout_width="@dimen/high_sixteen"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/padding_ten"
+                android:layout_toLeftOf="@id/aty_forum_detail_zhuanfa"
+                android:src="@mipmap/forum_wujiaoxing" />
+
+            <ImageView
+                android:id="@+id/aty_forum_detail_louzhu"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/high_sixteen"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/padding_ten"
+                android:layout_toLeftOf="@id/aty_forum_detail_wujiaoxing"
+                android:src="@mipmap/forum_louzhu" />
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+    <TextView style="@style/Line" />
+
+    <WebView
+        android:id="@+id/aty_forum_detail_webview"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/zero"
+        android:layout_weight="1"></WebView>
+
+    <TextView style="@style/Line" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/thirty"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/aty_forum_detail_login"
+            android:layout_width="@dimen/zero"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="@null"
+            android:enabled="true"
+            android:cursorVisible="false"
+            android:gravity="center"
+            android:hint="@string/public_details_edit"
+            android:textSize="@dimen/textsize_small"
+            android:textColorHint="@color/grayword_less" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/public_details_current"
+            android:textColor="@color/wordColor_blue" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginRight="@dimen/padding_ten"
+            android:text="@string/public_details_all"
+            android:textColor="@color/wordColor_blue" />
+    </LinearLayout>
+
+</LinearLayout>

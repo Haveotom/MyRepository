@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView style="@style/Line" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/zero"
+        android:layout_weight="1"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/item_content_detail_head"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/padding_ten"
+            android:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:id="@+id/item_content_detail_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/item_content_detail_head"
+            android:layout_marginLeft="@dimen/padding_ten"
+            android:layout_toRightOf="@id/item_content_detail_head"
+            android:text="name"
+            android:textColor="@color/wordColor_blue"
+            android:textSize="@dimen/textsize_small" />
+
+        <TextView
+            android:id="@+id/item_content_detail_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/item_content_detail_head"
+            android:layout_marginLeft="@dimen/padding_ten"
+            android:layout_toRightOf="@id/item_content_detail_head"
+            android:text="content"
+            android:textColor="@color/grayWord"
+            android:typeface="monospace"
+            android:textSize="@dimen/textsize_small" />
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?><!--降价-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/title_height"
+
+            android:orientation="horizontal"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/depreciate_brand"
+                    style="@style/wrap"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/wrap"
+                        android:layout_gravity="center"
+                        android:paddingLeft="@dimen/padding_horizontal"
+                        android:text="@string/depreciate_text_pinpai"
+                        android:textSize="@dimen/textsize_small" />
+
+                    <ImageView
+                        style="@style/wrap"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/item_margin_small"
+                        android:src="@mipmap/recommend_fastreport_guide" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/depreciate_price"
+                    style="@style/wrap"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/padding_horizontal"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        style="@style/wrap"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/thirty"
+                        android:text="@string/depreciate_text_price"
+                        android:textSize="@dimen/textsize_small" />
+
+                    <ImageView
+                        style="@style/wrap"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/item_margin_small"
+                        android:src="@mipmap/recommend_fastreport_guide" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/depreciate_rank"
+                    style="@style/wrap"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/padding_horizontal"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        style="@style/wrap"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/thirty"
+                        android:text="@string/depreciate_text_jibie"
+                        android:textSize="@dimen/textsize_small" />
+
+                    <ImageView
+                        style="@style/wrap"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/item_margin_small"
+                        android:src="@mipmap/recommend_fastreport_guide" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/depreciate_order"
+                    style="@style/wrap"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/padding_horizontal"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        style="@style/wrap"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/thirty"
+                        android:text="@string/depreciate_text_paixu"
+                        android:textSize="@dimen/textsize_small" />
+
+                    <ImageView
+                        style="@style/wrap"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/item_margin_small"
+                        android:src="@mipmap/recommend_fastreport_guide" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/depreciate_area"
+                    style="@style/wrap"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/padding_horizontal"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        style="@style/wrap"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/thirty"
+                        android:text="@string/depreciate_text_dalian"
+                        android:textSize="@dimen/textsize_small" />
+
+                    <ImageView
+                        style="@style/wrap"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/item_margin_small"
+                        android:src="@mipmap/recommend_fastreport_guide" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </HorizontalScrollView>
+    </LinearLayout>
+
+    <TextView style="@style/Line" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/findcar_depreciate_rv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <com.bartoszlipinski.recyclerviewheader2.RecyclerViewHeader
+            android:id="@+id/findcar_depreciate_header_rv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/findcar_depreciate_header_rl"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_ten">
+
+                    <ImageView
+                        android:id="@+id/findcar_depreciate_icon_iv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/ic_launcher" />
+
+                    <TextView
+                        android:id="@+id/findcar_depreciate_title_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/findcar_depreciate_icon_iv"
+                        android:layout_marginLeft="@dimen/padding_ten"
+                        android:layout_toRightOf="@id/findcar_depreciate_icon_iv"
+                        android:text="title"
+                        android:textColor="@color/grayWord_much"
+                        android:typeface="monospace" />
+
+                    <TextView
+                        android:id="@+id/findcar_depreciate_time_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@id/findcar_depreciate_icon_iv"
+                        android:layout_alignLeft="@id/findcar_depreciate_title_tv"
+                        android:text="time"
+                        android:textColor="@color/grayword_less"
+                        android:textSize="@dimen/textsize_small" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="@dimen/padding_ten"
+                        android:src="@mipmap/tuiguang1" />
+                </RelativeLayout>
+
+                <TextView style="@style/lineHeight_background" />
+            </LinearLayout>
+        </com.bartoszlipinski.recyclerviewheader2.RecyclerViewHeader>
+
+    </FrameLayout>
+
+
+</LinearLayout>

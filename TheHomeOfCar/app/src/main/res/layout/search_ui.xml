@@ -16,11 +16,11 @@
         <SearchView
             android:id="@+id/search_frame"
             android:layout_width="@dimen/zero"
-            android:layout_height="@dimen/layout_height_fifty"
+            android:layout_height="@dimen/title_height"
             android:layout_weight="1"
             android:alpha="0.6"
             android:inputType="textFilter"
-            android:background="@color/colorLine"
+            android:background="@color/grayword_less"
             android:iconifiedByDefault="false"
             android:queryHint="@string/search_text" />
 

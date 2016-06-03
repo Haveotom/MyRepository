@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    android:orientation="vertical">
+
+
+    <ScrollView
+        android:id="@+id/filter_popup_window_scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                style="@style/Line" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/zero"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/twentyfive">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_one_hundred"
+                    android:text="价格"
+                    android:layout_marginTop="@dimen/padding_ten"
+                    android:textColor="@color/grayword_less" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_one_hundred"
+                    android:text="级别"
+                    android:textColor="@color/grayword_less" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_one_hundred"
+                    android:text="国别"
+                    android:textColor="@color/grayword_less" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_one_hundred"
+                    android:text="结构"
+                    android:textColor="@color/grayword_less" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_one_hundred"
+                    android:text="配置"
+                    android:textColor="@color/grayword_less" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_one_hundred"
+                    android:text="变速箱"
+                    android:textColor="@color/grayword_less" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_one_hundred"
+                    android:text="排量"
+                    android:textColor="@color/grayword_less" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_one_hundred"
+                    android:text="属性"
+                    android:textColor="@color/grayword_less" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_one_hundred"
+                    android:text="燃料"
+                    android:textColor="@color/grayword_less" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_one_hundred"
+                    android:text="驱动"
+                    android:textColor="@color/grayword_less" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_one_hundred"
+                    android:text="座位数"
+                    android:textColor="@color/grayword_less" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_thirtyfive"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="@dimen/padding_twelve"
+        android:layout_marginLeft="@dimen/high_twenty"
+        android:layout_marginRight="@dimen/high_twenty"
+        android:background="@android:color/holo_blue_light"
+        android:text="未找到符合条件的车系 >"
+        android:textColor="@color/white"
+        android:textSize="@dimen/textsize_normal"
+
+        android:typeface="monospace" />
+
+</FrameLayout>

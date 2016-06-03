@@ -5,7 +5,10 @@ import java.util.List;
 /**
  * Created by dllo on 16/5/14.
  * http://club.app.autohome.com.cn/club_v5.6.0/club/shotfoumlist-pm1-p1-s50.json
+ *
+ * 详情 http://forum.app.autohome.com.cn/forum_v5.7.0/forum/club/topiccontent-a2-pm2-v5.8.5-t%@-o0-p1-s20-c1-nt0-fs0-sp0-al0-cw360.json
  */
+//204 GET http://124.239.197.172/autov5.7.0/ad/brandzonead.ashx?appid=2&platform=2&version=5.8.5&networkid=0&idfa=0&deviceid=99000628573771&mac=02:00:00:00:00:00&advertype=37&cityid=0&devicebrand=Xiaomi&devicemodel=MI4LTE&bid=8&bname=%E7%A6%8F%E7%89%B9&lng=121.550941&lat=38.889693&gps_city=210200&pageid=61c46c7a-4c6d-418f-91e3-69b45d254390&isretry=0 HTTP/1.1 	=> HTTP/1.1 404 Not Found	 [0.113 s]
 public class HotPostData {
 
     /**

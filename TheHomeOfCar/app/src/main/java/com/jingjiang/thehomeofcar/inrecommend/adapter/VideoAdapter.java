@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.jingjiang.thehomeofcar.R;
 import com.jingjiang.thehomeofcar.bean.inrecommend.VideoData;
+import com.jingjiang.thehomeofcar.myinterface.MyRvOnClickListener;
 
 import it.sephiroth.android.library.picasso.Picasso;
 
@@ -19,6 +20,11 @@ import it.sephiroth.android.library.picasso.Picasso;
 public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHolder> {
     private VideoData videoData;
     private Context context;
+    private MyRvOnClickListener myRvOnClickListener;
+
+    public void setMyRvOnClickListener(MyRvOnClickListener myRvOnClickListener) {
+        this.myRvOnClickListener = myRvOnClickListener;
+    }
 
     public VideoAdapter(Context context) {
         this.context = context;
@@ -32,7 +38,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
     @Override
     public VideoViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.item_r_newest, null);
-        VideoViewHolder viewHolder = new VideoViewHolder(view);
+        VideoViewHolder viewHolder = new VideoViewHolder(view, myRvOnClickListener);
         return viewHolder;
     }
 
@@ -50,16 +56,27 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
         return videoData != null ? videoData.getResult().getList().size() : 0;
     }
 
-    class VideoViewHolder extends RecyclerView.ViewHolder {
+    class VideoViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView titleTv, timeTv, countTv;
         ImageView iconIv;
 
-        public VideoViewHolder(View itemView) {
+        public VideoViewHolder(View itemView, MyRvOnClickListener listener) {
             super(itemView);
             titleTv = (TextView) itemView.findViewById(R.id.item_video_title_tv);
             countTv = (TextView) itemView.findViewById(R.id.item_video_count_tv);
             timeTv = (TextView) itemView.findViewById(R.id.item_video_time_tv);
             iconIv = (ImageView) itemView.findViewById(R.id.item_video_icon_iv);
+            myRvOnClickListener = listener;
+            itemView.setOnClickListener(this);
+
+        }
+
+        @Override
+        public void onClick(View v) {
+            if (myRvOnClickListener != null) {
+                myRvOnClickListener.onItemClick(v, getPosition());
+            }
+
         }
     }
 }

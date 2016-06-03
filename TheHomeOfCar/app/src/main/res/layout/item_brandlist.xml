@@ -32,7 +32,7 @@
         android:layout_marginTop="@dimen/bottom_small"
         android:ellipsize="end"
         android:maxLines="1"
-        android:singleLine="false"
+        android:singleLine="true"
         android:text="adinfo"
         android:textColor="@color/grayword_less"
         android:textSize="@dimen/textsize_smallest" />

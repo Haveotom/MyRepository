@@ -1,5 +1,6 @@
 package com.jingjiang.thehomeofcar.indiscover.adapter;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,11 @@ import it.sephiroth.android.library.picasso.Picasso;
  */
 public class CarBusinessAdapter extends BaseAdapter {
     private ActivityAreaData activityAreaData;
+    private Context context;
+
+    public CarBusinessAdapter(Context context) {
+        this.context = context;
+    }
 
     public void setActivityAreaData(ActivityAreaData activityAreaData) {
         this.activityAreaData = activityAreaData;
@@ -42,14 +48,14 @@ public class CarBusinessAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder = null;
         if (convertView == null) {
-            convertView = LayoutInflater.from(MyApplication.context).inflate(R.layout.item_acitivity_area, null);
+            convertView = LayoutInflater.from(context).inflate(R.layout.item_acitivity_area, null);
             holder = new ViewHolder(convertView);
             convertView.setTag(holder);
 
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        Picasso.with(MyApplication.context).load(activityAreaData.getResult().getBusinesslist().get(position).getIconurl())
+        Picasso.with(context).load(activityAreaData.getResult().getBusinesslist().get(position).getIconurl())
                 .into(holder.imageView);
         return convertView;
     }

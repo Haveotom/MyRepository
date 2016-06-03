@@ -21,6 +21,8 @@ import android.view.animation.DecelerateInterpolator;
 import android.view.animation.Transformation;
 import android.widget.AbsListView;
 
+import com.jingjiang.thehomeofcar.inrecommend.frament.NewestFragment;
+
 /**
  * Created by dllo on 15/8/5.
  * 下拉刷新
@@ -223,6 +225,8 @@ public class SwipeRefreshLoadingLayout extends ViewGroup {
         setEnabled(a.getBoolean(0, true));
         a.recycle();
     }
+
+
 
     @Override
     public void onAttachedToWindow() {

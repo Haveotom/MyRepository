@@ -1,5 +1,6 @@
 package com.jingjiang.thehomeofcar.indiscover.adapter;
 
+import android.content.Context;
 import android.graphics.Paint;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +21,11 @@ import it.sephiroth.android.library.picasso.Picasso;
  */
 public class BrandListAdapter extends BaseAdapter {
     private HotSellData hotSellData;
+    private Context context;
+
+    public BrandListAdapter(Context context) {
+        this.context = context;
+    }
 
     public void setHotSellData(HotSellData hotSellData) {
         this.hotSellData = hotSellData;
@@ -45,7 +51,7 @@ public class BrandListAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder = null;
         if (convertView == null) {
-            convertView = LayoutInflater.from(MyApplication.context).inflate(R.layout.item_brandlist, null);
+            convertView = LayoutInflater.from(context).inflate(R.layout.item_brandlist, null);
             holder = new ViewHolder(convertView);
             convertView.setTag(holder);
 
@@ -57,8 +63,9 @@ public class BrandListAdapter extends BaseAdapter {
         holder.priceTv.setText(hotSellData.getResult().getGoodslist().getList().get(position).getPrice());
         holder.fctPriceTv.setText(hotSellData.getResult().getGoodslist().getList().get(position).getFctprice());
         holder.fctPriceTv.getPaint().setAntiAlias(true);
-        holder.fctPriceTv.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG | Paint.ANTI_ALIAS_FLAG);//中划线 清晰
-        Picasso.with(MyApplication.context).load(hotSellData.getResult().getGoodslist().getList().get(position).getLogo()).
+        //中划线 清晰
+        holder.fctPriceTv.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG | Paint.ANTI_ALIAS_FLAG);
+        Picasso.with(context).load(hotSellData.getResult().getGoodslist().getList().get(position).getLogo()).
                 resize(170, 120).into(holder.iconIv);
         return convertView;
     }

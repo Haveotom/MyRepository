@@ -40,13 +40,12 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:background="@android:color/holo_blue_light"
-                android:gravity="center"
-                android:text="轮播图" />
 
+            <com.youth.banner.Banner
+                android:id="@+id/discover_recycler_picture"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/hundred_thirty"
+                android:background="#00000000" />
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/discover_car_media_rv"
@@ -103,7 +102,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/padding_horizontal"
-                android:text="特惠热卖"
+                android:text="@string/hotsell"
                 android:textColor="@color/grayWord_much" />
 
             <TextView style="@style/Line" />
@@ -124,7 +123,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/padding_horizontal"
-                android:text="品牌精品"
+                android:text="@string/brand_jingping"
                 android:textColor="@color/grayWord_much" />
 
             <TextView style="@style/Line" />
@@ -135,14 +134,17 @@
                 android:layout_height="wrap_content"
                 android:numColumns="2"
                 android:stretchMode="columnWidth" />
+
             <TextView style="@style/Line" />
+
             <TextView style="@style/lineHeight_background" />
+
             <TextView
                 android:id="@+id/discover_hot_sell_title2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/padding_horizontal"
-                android:text="商品列表"
+                android:text="@string/shangpingliebiao"
                 android:textColor="@color/grayWord_much" />
 
             <TextView style="@style/Line" />
