@@ -1,14 +1,15 @@
 package com.jingjiang.thehomeofcar.inrecommend.frament;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.bartoszlipinski.recyclerviewheader2.RecyclerViewHeader;
 import com.jingjiang.thehomeofcar.R;
 import com.jingjiang.thehomeofcar.base.BaseFragment;
 import com.jingjiang.thehomeofcar.base.MyApplication;
@@ -17,6 +18,8 @@ import com.jingjiang.thehomeofcar.inrecommend.activity.RecommendPublicAty;
 import com.jingjiang.thehomeofcar.inrecommend.adapter.NewestAdapter;
 import com.jingjiang.thehomeofcar.myinterface.MyRvOnClickListener;
 import com.jingjiang.thehomeofcar.widget.VolleySingle;
+import com.sch.rfview.AnimRFRecyclerView;
+import com.sch.rfview.manager.AnimRFLinearLayoutManager;
 import com.youth.banner.Banner;
 
 
@@ -25,10 +28,10 @@ import com.youth.banner.Banner;
  */
 public class NewestFragment extends BaseFragment {
     private NewestAdapter newestAdapter;
-    private RecyclerView recyclerView;
+    private AnimRFRecyclerView recyclerView;
     //刷新
-    private SwipeRefreshLayout refresh;
-    private RecyclerViewHeader header;
+    private View header;
+    private Handler handler = new Handler();
     //轮播图
     private NewestData data;
     private Banner banner;
@@ -42,18 +45,28 @@ public class NewestFragment extends BaseFragment {
     @Override
     public void initView() {
         recyclerView = bindView(R.id.newest_rv);
-        header = bindView(R.id.newest_header_rv);
+//        header = bindView(R.id.newest_header_rv);
+        header = LayoutInflater.from(getContext()).inflate(R.layout.recommend_f_newest_header, null);
 //        refresh = bindView(R.id.newest_refresh);
 //        refresh.setOnRefreshListener(this);
         newestAdapter = new NewestAdapter(getContext());
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setOverScrollMode(View.OVER_SCROLL_NEVER);
+        recyclerView.setLayoutManager(new AnimRFLinearLayoutManager(getContext()));///
+//        recyclerView.setOverScrollMode(View.OVER_SCROLL_NEVER);
+        recyclerView.setColor(Color.BLUE, Color.WHITE);
+        //设置头部恢复动画的执行时间,默认是500毫秒
+        recyclerView.setHeaderImageDurationMillis(500);
+        recyclerView.setScaleRatio(1.7f);
 
-        banner = bindView(R.id.newest_recycle_picture);
+        recyclerView.addHeaderView(header);
+
+        banner = (Banner) header.findViewById(R.id.newest_recycle_picture);
+
+
     }
 
     @Override
     public void initData() {
+
 
         //轮播图
         VolleySingle.getInstance()._addRequest(
@@ -67,6 +80,7 @@ public class NewestFragment extends BaseFragment {
                     @Override
                     public void onResponse(final NewestData response) {
                         data = response;
+                        Log.d("NewestFragment", "data.getResult().getNewslist().size():" + data.getResult().getNewslist().size());
                         newestAdapter.setNewestData(response);
 //
                         String[] images = new String[response.getResult().getFocusimg().size()];
@@ -81,20 +95,20 @@ public class NewestFragment extends BaseFragment {
                                 Intent intent = new Intent(getContext(), RecommendPublicAty.class);
                                 String recycleUrl = "";
                                 //实现点击事件
-                                if (data.getResult().getFocusimg().get(position-1).getJumpurl() != "") {
-                                    intent.putExtra("URL", data.getResult().getFocusimg().get(position-1).getJumpurl());
+                                if (data.getResult().getFocusimg().get(position - 1).getJumpurl() != "") {
+                                    intent.putExtra("URL", data.getResult().getFocusimg().get(position - 1).getJumpurl());
                                     startActivity(intent);
-                                } else if (data.getResult().getFocusimg().get(position-1).getJumpurl() == "") {
+                                } else if (data.getResult().getFocusimg().get(position - 1).getJumpurl() == "") {
 
-                                    if (data.getResult().getFocusimg().get(position-1).getMediatype() == 1) {
+                                    if (data.getResult().getFocusimg().get(position - 1).getMediatype() == 1) {
                                         recycleUrl = "http://cont.app.autohome.com.cn/autov5.0.0/content/news/newscontent-n%@-t0.json";
 
-                                    } else if (data.getResult().getFocusimg().get(position-1).getMediatype() == 2) {
+                                    } else if (data.getResult().getFocusimg().get(position - 1).getMediatype() == 2) {
                                         recycleUrl = "http://v.autohome.com.cn/v_4_%@.html";
                                     } else {
                                         recycleUrl = "http://forum.app.autohome.com.cn/autov5.0.0/forum/club/topiccontent-a2-pm2-v5.0.0-t%@-o0-p1-s20-c1-nt0-fs0-sp0-al0-cw320.json";
                                     }
-                                    recycleUrl = recycleUrl.replace("%@", String.valueOf(data.getResult().getFocusimg().get(position-1).getId()));
+                                    recycleUrl = recycleUrl.replace("%@", String.valueOf(data.getResult().getFocusimg().get(position - 1).getId()));
                                     intent.putExtra("URL", recycleUrl);
                                     startActivity(intent);
 
@@ -133,8 +147,114 @@ public class NewestFragment extends BaseFragment {
 
 
         });
-        header.attachTo(recyclerView);
+
         recyclerView.setAdapter(newestAdapter);
+
+        initRefreshAndLoad();
+
+
+    }
+
+    private void initRefreshAndLoad() {
+        recyclerView.setLoadDataListener(new AnimRFRecyclerView.LoadDataListener() {
+            @Override
+            public void onRefresh() {
+                new Thread(new MyRunnable(true)).start();
+
+            }
+
+            @Override
+            public void onLoadMore() {
+                new Thread(new MyRunnable(false)).start();
+
+            }
+        });
+
+
+
+    }
+
+    class MyRunnable implements Runnable {
+        boolean isRefesh;
+
+        public MyRunnable(boolean isRefesh) {
+            this.isRefesh = isRefesh;
+        }
+
+        @Override
+        public void run() {
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            handler.post(new Runnable() {
+                @Override
+                public void run() {
+                    if (isRefesh) {
+                        newData();
+                        refreshComplate();
+                        //刷新完成后调用,必须在UI线程中
+                        recyclerView.refreshComplate();
+                    } else {
+                        addData();
+                        loadMoreComplate();
+                        //加载更多完成后调用
+                        recyclerView.loadMoreComplate();
+                    }
+                }
+            });
+
+        }
+
+
+    }
+
+    private void refreshComplate() {
+        recyclerView.setRefresh(true);
+        recyclerView.getAdapter().notifyDataSetChanged();
+
+    }
+
+    private void loadMoreComplate() {
+        recyclerView.getAdapter().notifyDataSetChanged();
+
+    }
+
+
+    private void addData() {
+
+        String url = "";
+        url = "http://app.api.autohome.com.cn/autov4.2.5/news/newslist-a2-pm1-v4.2.5-c0-nt0-p%ld-s30-l%@.html";
+        url = url.replace("%@", data.getResult().getNewslist().get(data.getResult().getNewslist().size() - 1).getLasttime());
+        url = url.replace("%ld", String.valueOf(data.getResult().getNewslist().get(data.getResult().getNewslist().size() - 1).getId()));
+        VolleySingle.getInstance()._addRequest(url,
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                }, new Response.Listener<NewestData>() {
+                    @Override
+                    public void onResponse(NewestData response) {
+                        for (int i = 0; i < response.getResult().getNewslist().size(); i++) {
+                            data.getResult().getNewslist().add(response.getResult().getNewslist().get(i));
+                        }
+                        Log.d("NewestFragment", "data.getResult().getNewslist().size():" + "aa" + data.getResult().getNewslist().size());
+
+                        newestAdapter.setNewestData(data);
+
+                    }
+                }, NewestData.class);
+
+
+    }
+
+
+    private void newData() {
+        recyclerView.setRefresh(true);
+        newestAdapter.setNewestData(data);
+
     }
 
 }

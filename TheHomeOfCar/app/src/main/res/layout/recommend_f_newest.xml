@@ -10,25 +10,25 @@
     <!--android:layout_height="match_parent">-->
 
 
-    <android.support.v7.widget.RecyclerView
+    <com.sch.rfview.AnimRFRecyclerView
         android:id="@+id/newest_rv"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
 
-    <com.bartoszlipinski.recyclerviewheader2.RecyclerViewHeader
-        android:id="@+id/newest_header_rv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+    <!--<com.bartoszlipinski.recyclerviewheader2.RecyclerViewHeader-->
+        <!--android:id="@+id/newest_header_rv"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content">-->
 
-        <com.youth.banner.Banner
-            android:id="@+id/newest_recycle_picture"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/hundred_eighty"
-            android:layout_centerInParent="true"
-            android:fitsSystemWindows="true"></com.youth.banner.Banner>
+        <!--<com.youth.banner.Banner-->
+            <!--android:id="@+id/newest_recycle_picture"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="@dimen/hundred_eighty"-->
+            <!--android:layout_centerInParent="true"-->
+            <!--android:fitsSystemWindows="true"></com.youth.banner.Banner>-->
 
-    </com.bartoszlipinski.recyclerviewheader2.RecyclerViewHeader>
+    <!--</com.bartoszlipinski.recyclerviewheader2.RecyclerViewHeader>-->
     <!--</android.support.v4.widget.SwipeRefreshLayout>-->
 
 

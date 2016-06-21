@@ -1,6 +1,8 @@
 package com.jingjiang.thehomeofcar.inrecommend.frament;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Handler;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.LinearLayoutManager;
@@ -33,6 +35,8 @@ import com.jingjiang.thehomeofcar.myinterface.MyRvOnClickListener;
 import com.jingjiang.thehomeofcar.widget.GsonRequest;
 import com.jingjiang.thehomeofcar.widget.MyRequestQueue;
 import com.jingjiang.thehomeofcar.widget.VolleySingle;
+import com.sch.rfview.AnimRFRecyclerView;
+import com.sch.rfview.manager.AnimRFLinearLayoutManager;
 
 import java.util.List;
 
@@ -40,7 +44,7 @@ import java.util.List;
  * Created by dllo on 16/5/9.
  */
 public class FastReportFragment extends BaseFragment implements View.OnClickListener {
-    private RecyclerView recyclerView;
+    private AnimRFRecyclerView recyclerView;
     private FastReportAdapter fastReportAdapter;
     private AllBrandAdapter allBrandAdapter;
     private AllRankAdapter allRankAdapter;
@@ -48,6 +52,8 @@ public class FastReportFragment extends BaseFragment implements View.OnClickList
     private DrawerLayout drawer;
     private LinearLayout allBrandLl, allRankLl;
     private TextView closeTv, allBrandTv, allRankTv;
+    private Handler handler = new Handler();
+    private FastReportData data;
 
 
     @Override
@@ -58,7 +64,7 @@ public class FastReportFragment extends BaseFragment implements View.OnClickList
     @Override
     public void initView() {
         recyclerView = bindView(R.id.fastreport_rv);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setLayoutManager(new AnimRFLinearLayoutManager(getContext()));
         fastReportAdapter = new FastReportAdapter(getContext());
         allBrandAdapter = new AllBrandAdapter(getContext());
         allRankAdapter = new AllRankAdapter(getContext());
@@ -74,6 +80,8 @@ public class FastReportFragment extends BaseFragment implements View.OnClickList
 //        drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
         allBrandTv = bindView(R.id.fastreport_all_brand_tv);
         allRankTv = bindView(R.id.fastreport_all_rank_tv);
+        recyclerView.setColor(Color.BLUE, Color.WHITE);
+
 
     }
 
@@ -93,23 +101,111 @@ public class FastReportFragment extends BaseFragment implements View.OnClickList
                 }, new Response.Listener<FastReportData>() {
                     @Override
                     public void onResponse(final FastReportData response) {
+                        data = response;
                         fastReportAdapter.setMyRvOnClickListener(new MyRvOnClickListener() {
                             @Override
                             public void onItemClick(View view, int position) {
                                 Intent intent = new Intent(getContext(), FastReportAty.class);
-                                int id = response.getResult().getList().get(position).getId();
+                                int id = data.getResult().getList().get(position).getId();
                                 intent.putExtra("ID", id);
                                 startActivity(intent);
                             }
                         });
 
-                        fastReportAdapter.setFastReportDatas(response);
+                        fastReportAdapter.setFastReportDatas(data);
 
                     }
                 }, FastReportData.class);
         recyclerView.setOverScrollMode(View.OVER_SCROLL_NEVER);//去掉阴影部分
         recyclerView.setAdapter(fastReportAdapter);
+        initRefreshAndLoad();
     }
+
+    private void initRefreshAndLoad() {
+        recyclerView.setLoadDataListener(new AnimRFRecyclerView.LoadDataListener() {
+            @Override
+            public void onRefresh() {
+                new Thread(new MyRunnable(true)).start();
+            }
+            @Override
+            public void onLoadMore() {
+                new Thread(new MyRunnable(false)).start();
+
+            }
+        });
+        recyclerView.setRefresh(true);
+    }
+
+    class MyRunnable implements Runnable {
+        boolean isRefreah;
+
+        public MyRunnable(boolean isRefreah) {
+            this.isRefreah = isRefreah;
+        }
+
+        @Override
+        public void run() {
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    if (isRefreah) {
+                        refreshData();
+                        refreshComplate();
+                        //刷新完成后调用
+                        recyclerView.refreshComplate();
+
+                    } else {
+                        loadData();
+                        loadMoreComplate();
+                        //加载更多之后调用
+                        recyclerView.loadMoreComplate();
+                    }
+
+                }
+            }, 2000);
+
+
+        }
+    }
+
+
+    private void loadData() {
+        String url = "";
+        url = "http://app.api.autohome.com.cn/autov5.0.0/news/fastnewslist-pm2-b0-l0-s20-lastid%@.json";
+        url = url.replace("%@", data.getResult().getList().get(data.getResult().getList().size() - 1).getLastid());
+        VolleySingle.getInstance()._addRequest(url,
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                }, new Response.Listener<FastReportData>() {
+                    @Override
+                    public void onResponse(FastReportData response) {
+                        for (int i = 0; i < response.getResult().getList().size(); i++) {
+                            data.getResult().getList().add(response.getResult().getList().get(i));
+                        }
+                        fastReportAdapter.setFastReportDatas(data);
+                    }
+                }, FastReportData.class);
+
+    }
+
+    private void refreshData() {
+        fastReportAdapter.setFastReportDatas(data);
+
+    }
+
+    private void loadMoreComplate() {
+        recyclerView.getAdapter().notifyDataSetChanged();
+
+    }
+
+    private void refreshComplate() {
+        recyclerView.getAdapter().notifyDataSetChanged();
+
+    }
+
 
     @Override
     public void onClick(View v) {
