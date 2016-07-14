@@ -10,7 +10,7 @@ import android.content.Context;
  */
 public class MyApplication extends Application {
     public static Context context;
-    //Application创建的原因四我们需要一个属于自己的大"环境"(context)
+    //Application创建的原因是我们需要一个属于自己的大"环境"(context)
     //保证自己的App拥有单独的一个context对象
 
     //第一个生命周期中我们对context赋值

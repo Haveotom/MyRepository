@@ -24,7 +24,7 @@ import com.youth.banner.Banner;
 
 
 /**
- * Created by dllo on 16/5/9.
+ * Created by dl  lo on 16/5/9.
  */
 public class NewestFragment extends BaseFragment {
     private NewestAdapter newestAdapter;

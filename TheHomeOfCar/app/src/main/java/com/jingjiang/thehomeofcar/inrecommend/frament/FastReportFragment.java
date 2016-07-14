@@ -5,25 +5,15 @@ import android.graphics.Color;
 import android.os.Handler;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.Volley;
-
-
 import com.jingjiang.thehomeofcar.R;
 import com.jingjiang.thehomeofcar.base.BaseFragment;
-import com.jingjiang.thehomeofcar.base.MyApplication;
 import com.jingjiang.thehomeofcar.bean.inrecommend.FastReportData;
 import com.jingjiang.thehomeofcar.inrecommend.activity.FastReportAty;
 import com.jingjiang.thehomeofcar.inrecommend.adapter.FastReportAdapter;
@@ -32,13 +22,9 @@ import com.jingjiang.thehomeofcar.inrecommend.infastreport.AllBrandData;
 import com.jingjiang.thehomeofcar.inrecommend.infastreport.AllRankAdapter;
 import com.jingjiang.thehomeofcar.inrecommend.infastreport.AllRankData;
 import com.jingjiang.thehomeofcar.myinterface.MyRvOnClickListener;
-import com.jingjiang.thehomeofcar.widget.GsonRequest;
-import com.jingjiang.thehomeofcar.widget.MyRequestQueue;
 import com.jingjiang.thehomeofcar.widget.VolleySingle;
 import com.sch.rfview.AnimRFRecyclerView;
 import com.sch.rfview.manager.AnimRFLinearLayoutManager;
-
-import java.util.List;
 
 /**
  * Created by dllo on 16/5/9.
